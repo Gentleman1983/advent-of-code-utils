@@ -4,6 +4,12 @@ dependencies {
 }
 
 subprojects {
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
     dependencies {
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     }
