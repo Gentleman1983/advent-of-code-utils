@@ -9,6 +9,10 @@ plugins {
     alias(libs.plugins.sonarqube.plugin)
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     rootProject.subprojects.forEach { subproject ->
         jacocoAggregation(subproject)
@@ -18,7 +22,7 @@ dependencies {
 configure<SonarExtension> {
     properties {
         property("sonar.host.url", "https://sonarcloud.io")
-        property("sonar.projectKey", "de.havox_design.aoc:advent_of_code")
+        property("sonar.projectKey", "de.havox_design.aoc_utils:advent-of-code-utils")
         property("sonar.organization", "havox")
         property("sonar.sourceEncoding", "UTF-8")
     }
