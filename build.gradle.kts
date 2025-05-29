@@ -45,13 +45,6 @@ tasks.withType<Wrapper> {
     gradleVersion = "8.14.1"
 }
 
-develocity {
-    buildScan {
-        termsOfUseUrl.set("https://gradle.com/help/legal-terms-of-use")
-        termsOfUseAgree.set("yes")
-    }
-}
-
 rootProject.allprojects.forEach { currentProject ->
     currentProject.apply(plugin = "jacoco")
     currentProject.apply(plugin = "java-library")
