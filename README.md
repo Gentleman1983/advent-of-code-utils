@@ -1,7 +1,7 @@
 # Advent of Code - Utility Package
 
 This project collects all my utility classes relevant to my [Advent of Code](https://adventofcode.com/) projects. 
-Currently, I am providing some utilities in Java and Kotlin for the different tasks of the past years. All projects are 
+Currently, I am providing some utilities in Java 21 and Kotlin for the different tasks of the past years. All projects are 
 built using build management system [Gradle](https://gradle.org/) and [GitHub Actions](https://docs.github.com/actions).
 
 [![SonarQube](https://sonarcloud.io/api/project_badges/measure?project=de.havox_design.aoc%3Aadvent_of_code&metric=alert_status "The current SonarQube analysis status")
