@@ -1,9 +1,9 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm)
+    alias(utilityLibs.plugins.kotlin.jvm)
 }
 
 dependencies {
-    compileOnly(libs.junit.jupiter)
+    compileOnly(utilityLibs.junit.jupiter)
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

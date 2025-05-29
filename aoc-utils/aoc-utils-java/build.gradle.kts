@@ -1,3 +1,3 @@
 dependencies {
-    implementation(libs.struts2.core)
+    implementation(utilityLibs.struts2.core)
 }
