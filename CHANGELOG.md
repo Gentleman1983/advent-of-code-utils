@@ -2,6 +2,9 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.0.current
+* tbd
+
+## 2025.0.3
 * Update dependency gradle to v8.14.3
 * Update dependency org.junit.jupiter:junit-jupiter to v5.13.3
 * Update dependency org.jetbrains.kotlin.jvm to v2.2.0
