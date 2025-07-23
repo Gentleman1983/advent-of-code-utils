@@ -2,7 +2,7 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.0.current
-* tbd
+* Update dependency org.junit.jupiter:junit-jupiter to v5.13.4
 
 ## 2025.0.3
 * Update dependency gradle to v8.14.3
