@@ -2,7 +2,7 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.0.current
-* tbd
+* Update Github Setup Java Action to v5
 
 ## 2025.0.4
 * Update dependency org.junit.jupiter:junit-jupiter to v5.13.4
@@ -23,4 +23,5 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
