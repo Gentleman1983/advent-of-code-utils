@@ -2,7 +2,11 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.0.current
+t.b.d
+
+## 2025.0.6
 * Update Github Setup Node Action to v5
+* Update Kotlin JVM to 2.2.20
 
 ## 2025.0.5
 * Update Github Setup Java Action to v5
@@ -27,6 +31,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
