@@ -2,7 +2,7 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.0.current
-t.b.d
+* Update Gradle to v9.1.0
 
 ## 2025.0.6
 * Update Github Setup Node Action to v5
@@ -31,6 +31,7 @@ t.b.d
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
