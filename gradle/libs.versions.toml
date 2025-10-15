@@ -2,7 +2,7 @@
 hamcrest = "3.0"
 junit5 = "6.0.0"
 kotlin-jvm = "2.2.20"
-sonarqube-plugin = "6.3.1.5724"
+sonarqube-plugin = "7.0.0.6105"
 struts2 = "7.0.3"
 
 [libraries]
