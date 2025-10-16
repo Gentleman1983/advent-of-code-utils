@@ -2,9 +2,14 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.0.current
+* tbd
+
+## 2025.0.7
 * Update Gradle to v9.1.0
 * Update dependency org.junit.jupiter:junit-jupiter to v6
 * Update dependency jacoco to v0.8.14
+* Update GitHub Setup node action to v6
+* Update dependency org.sonarqube to 7.0.0.6105
 
 ## 2025.0.6
 * Update Github Setup Node Action to v5
@@ -33,6 +38,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
