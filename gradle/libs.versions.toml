@@ -3,7 +3,7 @@ hamcrest = "3.0"
 junit5 = "6.0.0"
 kotlin-jvm = "2.2.20"
 sonarqube-plugin = "7.0.0.6105"
-struts2 = "7.0.3"
+struts2 = "7.1.1"
 
 [libraries]
 hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = "hamcrest" }
