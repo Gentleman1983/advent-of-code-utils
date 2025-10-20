@@ -2,7 +2,7 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.0.current
-* tbd
+* Update dependency org.apache.struts:struts2-core to v7.1.1
 
 ## 2025.0.7
 * Update Gradle to v9.1.0
@@ -38,6 +38,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
