@@ -1,8 +1,11 @@
 # Version change log
 This document provides an overview to the changes on the different releases...
 
-## 2025.0.current
+## 2025.1.current
 * t.b.d.
+
+## 2025.1.0
+* Enable configuration cache.
 
 ## 2025.0.8
 * Update dependency org.apache.struts:struts2-core to v7.1.1
