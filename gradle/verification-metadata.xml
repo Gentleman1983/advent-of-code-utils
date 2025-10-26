@@ -80,6 +80,12 @@
             <trusting group="org.junit.platform"/>
             <trusting group="org.opentest4j"/>
          </trusted-key>
+         <trusted-key id="34441E504A937F43EB0DAEF96A65176A0FB1CD0B">
+             <trusting group="org.apache.groovy"/>
+         </trusted-key>
+          <trusted-key id="48B086A7D843CFA258E83286928FBF39003C0425">
+              <trusting group="org.springframework"/>
+          </trusted-key>
       </trusted-keys>
    </configuration>
    <components>
