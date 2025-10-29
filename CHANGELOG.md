@@ -2,7 +2,7 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.1.current
-* t.b.d.
+* Update dependency node to v24
 
 ## 2025.1.0
 * Enable configuration cache.
@@ -46,6 +46,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
