@@ -3,7 +3,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.1.current
 * Update dependency node to v24
-* Update Gradle to v9.2.0
+* Update Gradle to v9.2.1
 * Update dependency org.junit.jupiter:junit-jupiter to v6.0.1
 * Update actions/checkout action to v6
 * Update dependency org.sonarqube to v7.1.0.6387
@@ -50,6 +50,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
