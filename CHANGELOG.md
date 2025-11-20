@@ -6,6 +6,7 @@ This document provides an overview to the changes on the different releases...
 * Update Gradle to v9.2.0
 * Update dependency org.junit.jupiter:junit-jupiter to v6.0.1
 * Update actions/checkout action to v6
+* Update dependency org.sonarqube to v7.1.0.6387
 
 ## 2025.1.0
 * Enable configuration cache.
@@ -49,6 +50,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
