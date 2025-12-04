@@ -2,7 +2,10 @@
 This document provides an overview to the changes on the different releases...
 
 ## 2025.1.current
-* t.b.d.
+* t.b.d
+
+## 2025.1.2
+* Update dependency org.sonarqube to v7.2.0.6526
 
 ## 2025.1.1
 * Update dependency node to v24
@@ -53,6 +56,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
