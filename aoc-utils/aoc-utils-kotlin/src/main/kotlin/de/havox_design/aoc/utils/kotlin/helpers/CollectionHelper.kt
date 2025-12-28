@@ -95,3 +95,7 @@ fun <A, B> Iterable<A>.pairwise(other: Iterable<B>): List<Pair<A, B>> =
 
 fun Collection<String>.filterNotEmpty(): Collection<String> =
     filter(String::isNotEmpty)
+
+fun <A> Iterable<A>.combinations(): List<Pair<A, A>> =
+    this
+        .pairwise(this)

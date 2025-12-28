@@ -9,7 +9,8 @@ day 4.
 * Import `Position3d<Int>.distanceTo(point: Position3d<Int>)` from 
 [AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) day 8.
 * Import `Iterable<A>.pairwise(other: Iterable<B>)` from 
-[AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) day 11.
+[AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) day 9.
+* Import `Iterable<A>.combinations()` from [AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) day 9.
 
 ## 2025.2.0
 *  Update dependency org.sonarqube to v7.2.2.6593
