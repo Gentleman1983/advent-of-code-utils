@@ -4,6 +4,8 @@ This document provides an overview to the changes on the different releases...
 ## 2025.3.current
 * Update `de.havox_design.aoc.utils.kotlin.LeftRightDirection` to work for 
 [AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) day 1.
+* Import `Collection<String>.filterNotEmpty()` from [AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) 
+day 4.
 
 ## 2025.2.0
 *  Update dependency org.sonarqube to v7.2.2.6593
