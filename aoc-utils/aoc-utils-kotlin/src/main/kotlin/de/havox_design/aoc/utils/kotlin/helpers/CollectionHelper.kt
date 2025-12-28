@@ -83,3 +83,15 @@ fun <T> priorityQueueOf(comparator: Comparator<T>, vararg args: T): PriorityQueu
 fun <T> linkedListOf(vararg elements: T) =
     elements
         .toCollection(LinkedList())
+
+fun <A, B> Iterable<A>.pairwise(other: Iterable<B>): List<Pair<A, B>> =
+    flatMapIndexed { i, a ->
+        other
+            .drop(i + 1)
+            .map { b ->
+                a to b
+            }
+    }
+
+fun Collection<String>.filterNotEmpty(): Collection<String> =
+    filter(String::isNotEmpty)
