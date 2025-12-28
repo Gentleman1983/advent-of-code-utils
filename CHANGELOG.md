@@ -6,6 +6,8 @@ This document provides an overview to the changes on the different releases...
 [AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) day 1.
 * Import `Collection<String>.filterNotEmpty()` from [AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) 
 day 4.
+* Import `Position3d<Int>.distanceTo(point: Position3d<Int>)` from [AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025)
+day 8.
 
 ## 2025.2.0
 *  Update dependency org.sonarqube to v7.2.2.6593

@@ -1,25 +1,10 @@
 package de.havox_design.aoc.utils.kotlin.model.positions
 
 import kotlin.math.abs
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 data class Position3d<t>(var x: t, var y: t, var z: t)
-
-operator fun Position3d<Int>.plus(other: Position3d<Int>) =
-    Position3d(x + other.x, y + other.y, z + other.z)
-
-operator fun Position3d<Int>.minus(other: Position3d<Int>) =
-    Position3d(x - other.x, y - other.y, z - other.z)
-
-fun Position3d<Int>.length2() =
-    x * x + y * y + z * z
-
-fun Position3d<Int>.manhattanDistance() =
-    abs(x) + abs(y) + abs(z)
-
-
-fun Position3d<Int>.manhattanDistance(other: Position3d<Int>) =
-    listOf(x - other.x, y - other.y, z - other.z)
-        .sumOf { abs(it) }
 
 fun Position3d<Int>.adjacent(offset: Int) =
     (-1..1)
@@ -33,6 +18,27 @@ fun Position3d<Int>.adjacent(offset: Int) =
                 }
         }
 
+fun Position3d<Int>.distanceTo(point: Position3d<Int>): Double {
+    return sqrt(
+        (point.x.toDouble() - x.toDouble()).pow(2) +
+                (point.y.toDouble() - y.toDouble()).pow(2) +
+                (point.z.toDouble() - z.toDouble()).pow(2)
+    )
+}
+
+fun Position3d<Int>.length2() =
+    x * x + y * y + z * z
+
+fun Position3d<Int>.manhattanDistance() =
+    abs(x) + abs(y) + abs(z)
+
+fun Position3d<Int>.manhattanDistance(other: Position3d<Int>) =
+    listOf(x - other.x, y - other.y, z - other.z)
+        .sumOf { abs(it) }
+
+operator fun Position3d<Int>.minus(other: Position3d<Int>) =
+    Position3d(x - other.x, y - other.y, z - other.z)
+
 fun Position3d<Int>.neighbours(): List<Position3d<Int>> {
     return listOf(
         Position3d<Int>(x - 1, y, z),
@@ -43,3 +49,6 @@ fun Position3d<Int>.neighbours(): List<Position3d<Int>> {
         Position3d<Int>(x, y, z + 1)
     )
 }
+
+operator fun Position3d<Int>.plus(other: Position3d<Int>) =
+    Position3d(x + other.x, y + other.y, z + other.z)
