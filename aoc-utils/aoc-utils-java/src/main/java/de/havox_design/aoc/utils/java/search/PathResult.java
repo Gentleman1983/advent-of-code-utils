@@ -18,12 +18,12 @@ public class PathResult<T> {
         this.prev = prev;
     }
 
-    public T getNode() {
-        return node;
-    }
-
     public long getDistance() {
         return distance;
+    }
+
+    public T getNode() {
+        return node;
     }
 
     public boolean isTarget() {

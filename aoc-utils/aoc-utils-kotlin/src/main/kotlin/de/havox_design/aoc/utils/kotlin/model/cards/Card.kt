@@ -16,6 +16,14 @@ enum class Card(val symbol: Char, private val orderPartOne: Int, private val ord
     ACE('A', 14, 14);
 
     companion object {
+        fun compare(a: Card, b: Card, partOne: Boolean): Int {
+            if (partOne) {
+                return a.orderPartOne.compareTo(b.orderPartOne)
+            }
+
+            return a.orderPartTwo.compareTo(b.orderPartTwo)
+        }
+
         fun from(c: Char): Card {
             if (entries.map { card -> card.symbol }.contains(c)) {
                 return entries
@@ -23,14 +31,6 @@ enum class Card(val symbol: Char, private val orderPartOne: Int, private val ord
             }
 
             throw IllegalArgumentException("No knows card symbol '${c}'")
-        }
-
-        fun compare(a: Card, b: Card, partOne: Boolean): Int {
-            if (partOne) {
-                return a.orderPartOne.compareTo(b.orderPartOne)
-            }
-
-            return a.orderPartTwo.compareTo(b.orderPartTwo)
         }
     }
 }

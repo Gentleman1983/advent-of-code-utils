@@ -2,6 +2,9 @@ package de.havox_design.aoc.utils.kotlin.helpers
 
 import java.util.*
 
+/**********************************************************************************************************************
+ * String                                                                                                             *
+ **********************************************************************************************************************/
 fun String?.parseInts(vararg delimiters: String, radix: Int = 10): List<Int> =
     this
         ?.split(*delimiters)

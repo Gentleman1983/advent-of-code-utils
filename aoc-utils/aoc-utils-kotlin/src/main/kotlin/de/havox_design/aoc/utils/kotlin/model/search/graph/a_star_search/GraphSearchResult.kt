@@ -1,6 +1,9 @@
 package de.havox_design.aoc.utils.kotlin.model.search.graph.a_star_search
 
 class GraphSearchResult<K>(val start: K, val end: K, private val result: Map<K, SeenVertex<K>>) {
+    /**********************************************************************************************************************
+     * Functions                                                                                                          *
+     **********************************************************************************************************************/
     fun getScore(vertex: K = end) =
         result[vertex]
             ?.score

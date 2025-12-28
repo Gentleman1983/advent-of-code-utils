@@ -6,8 +6,27 @@ enum class FourDirectionsFlipped(private val direction: Coordinate) {
     RIGHT(Coordinate(1, 0)),
     UP(Coordinate(0, -1));
 
+    /******************************************************************************************************************
+     * Operators                                                                                                      *
+     ******************************************************************************************************************/
     operator fun plus(other: Coordinate) =
         direction + other
+
+    /******************************************************************************************************************
+     * Functions                                                                                                      *
+     ******************************************************************************************************************/
+    fun dx(): Int =
+        direction.x
+
+    fun dy(): Int =
+        direction.y
+
+    fun turnAround() = when (this) {
+        UP -> DOWN
+        DOWN -> UP
+        LEFT -> RIGHT
+        RIGHT -> LEFT
+    }
 
     fun turnLeft() = when (this) {
         UP -> LEFT
@@ -22,17 +41,4 @@ enum class FourDirectionsFlipped(private val direction: Coordinate) {
         DOWN -> LEFT
         LEFT -> UP
     }
-
-    fun turnAround() = when (this) {
-        UP -> DOWN
-        DOWN -> UP
-        LEFT -> RIGHT
-        RIGHT -> LEFT
-    }
-
-    fun dx(): Int =
-        direction.x
-
-    fun dy(): Int =
-        direction.y
 }

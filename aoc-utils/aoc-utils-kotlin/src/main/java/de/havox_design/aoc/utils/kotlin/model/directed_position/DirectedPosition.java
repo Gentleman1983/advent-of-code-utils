@@ -21,20 +21,20 @@ public class DirectedPosition {
         };
     }
 
-    public DirectedPosition left() {
-        return new DirectedPosition(new Position2d<>(getX(), getY()), direction.turnLeft());
-    }
-
-    public DirectedPosition right() {
-        return new DirectedPosition(new Position2d<>(getX(), getY()), direction.turnRight());
-    }
-
     public int getX() {
         return position.getX();
     }
 
     public int getY() {
         return position.getY();
+    }
+
+    public DirectedPosition left() {
+        return new DirectedPosition(new Position2d<>(getX(), getY()), direction.turnLeft());
+    }
+
+    public DirectedPosition right() {
+        return new DirectedPosition(new Position2d<>(getX(), getY()), direction.turnRight());
     }
 
     @Override

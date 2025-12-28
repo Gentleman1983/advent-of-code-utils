@@ -31,14 +31,15 @@ public enum OpCode implements Consumer<IntComputer> {
         }
 
     },
-    MULTIPLY(IntComputer.getDataFor("MULTIPLY")) {
+    EQUALS(IntComputer.getDataFor("EQUALS")) {
         @Override
         public void accept(IntComputer computer) {
             Long instruction = computer.currentInstruction();
             Long first = computer.getNextParameter(computer.getMode(instruction, 1));
             Long second = computer.getNextParameter(computer.getMode(instruction, 2));
+            long val = first.equals(second) ? 1L : 0L;
 
-            computer.setNextParameter(first * second, computer.getMode(instruction, 3));
+            computer.setNextParameter(val, computer.getMode(instruction, 3));
         }
 
         @Override
@@ -48,7 +49,7 @@ public enum OpCode implements Consumer<IntComputer> {
             String second = computer.printParameter(computer.getMode(instruction, 2), 2);
             String third = computer.printParameter(0, 3);
 
-            return String.format("%s: %s = %s * %s", padZero(computer.getPointer()), third, first, second);
+            return String.format("%s: %s = ( %s == %s ) ? 1 : 0", padZero(computer.getPointer()), third, first, second);
         }
     },
     HALT(IntComputer.getDataFor("HALT")) {
@@ -62,14 +63,6 @@ public enum OpCode implements Consumer<IntComputer> {
         @Override
         public String toString(IntComputer computer) {
             return String.format("%s: HALT", padZero(computer.getPointer()));
-        }
-    },
-    NOP(IntComputer.getDataFor("NOP")) {
-        @Override
-        public String toString(IntComputer computer) {
-            String first = computer.printParameter(1, 0);
-
-            return String.format("%s: %s", padZero(computer.getPointer()), first);
         }
     },
     IN(IntComputer.getDataFor("IN")) {
@@ -95,17 +88,15 @@ public enum OpCode implements Consumer<IntComputer> {
             return String.format("%s: %s = user input", padZero(computer.getPointer()), first);
         }
     },
-    OUT(IntComputer.getDataFor("OUT")) {
+    JUMP_FALSE(IntComputer.getDataFor("JUMP_FALSE")) {
         @Override
-        @SuppressWarnings("squid:S2142")
         public void accept(IntComputer computer) {
             Long instruction = computer.currentInstruction();
             Long first = computer.getNextParameter(computer.getMode(instruction, 1));
+            Long second = computer.getNextParameter(computer.getMode(instruction, 2));
 
-            try {
-                computer.getOut().put(first);
-            } catch (InterruptedException e) {
-                throw new AdventOfCodeException(e);
+            if (first == 0) {
+                computer.setPointer(second.intValue() - 1L);
             }
         }
 
@@ -113,8 +104,9 @@ public enum OpCode implements Consumer<IntComputer> {
         public String toString(IntComputer computer) {
             Long instruction = computer.currentInstruction();
             String first = computer.printParameter(computer.getMode(instruction, 1), 1);
+            String second = computer.printParameter(computer.getMode(instruction, 2), 2);
 
-            return String.format("%s: print: %s", padZero(computer.getPointer()), first);
+            return String.format("%s: if ( %s == 0 ) jump to %s", padZero(computer.getPointer()), first, second);
         }
     },
     JUMP_TRUE(IntComputer.getDataFor("JUMP_TRUE")) {
@@ -138,27 +130,6 @@ public enum OpCode implements Consumer<IntComputer> {
             return String.format("%s: if ( %s != 0 ) jump to %s", padZero(computer.getPointer()), first, second);
         }
     },
-    JUMP_FALSE(IntComputer.getDataFor("JUMP_FALSE")) {
-        @Override
-        public void accept(IntComputer computer) {
-            Long instruction = computer.currentInstruction();
-            Long first = computer.getNextParameter(computer.getMode(instruction, 1));
-            Long second = computer.getNextParameter(computer.getMode(instruction, 2));
-
-            if (first == 0) {
-                computer.setPointer(second.intValue() - 1L);
-            }
-        }
-
-        @Override
-        public String toString(IntComputer computer) {
-            Long instruction = computer.currentInstruction();
-            String first = computer.printParameter(computer.getMode(instruction, 1), 1);
-            String second = computer.printParameter(computer.getMode(instruction, 2), 2);
-
-            return String.format("%s: if ( %s == 0 ) jump to %s", padZero(computer.getPointer()), first, second);
-        }
-    },
     LESS_THAN(IntComputer.getDataFor("LESS_THAN")) {
         @Override
         public void accept(IntComputer computer) {
@@ -180,15 +151,14 @@ public enum OpCode implements Consumer<IntComputer> {
             return String.format("%s: %s = ( %s < %s ) ? 1 : 0", padZero(computer.getPointer()), third, first, second);
         }
     },
-    EQUALS(IntComputer.getDataFor("EQUALS")) {
+    MULTIPLY(IntComputer.getDataFor("MULTIPLY")) {
         @Override
         public void accept(IntComputer computer) {
             Long instruction = computer.currentInstruction();
             Long first = computer.getNextParameter(computer.getMode(instruction, 1));
             Long second = computer.getNextParameter(computer.getMode(instruction, 2));
-            long val = first.equals(second) ? 1L : 0L;
 
-            computer.setNextParameter(val, computer.getMode(instruction, 3));
+            computer.setNextParameter(first * second, computer.getMode(instruction, 3));
         }
 
         @Override
@@ -198,7 +168,37 @@ public enum OpCode implements Consumer<IntComputer> {
             String second = computer.printParameter(computer.getMode(instruction, 2), 2);
             String third = computer.printParameter(0, 3);
 
-            return String.format("%s: %s = ( %s == %s ) ? 1 : 0", padZero(computer.getPointer()), third, first, second);
+            return String.format("%s: %s = %s * %s", padZero(computer.getPointer()), third, first, second);
+        }
+    },
+    NOP(IntComputer.getDataFor("NOP")) {
+        @Override
+        public String toString(IntComputer computer) {
+            String first = computer.printParameter(1, 0);
+
+            return String.format("%s: %s", padZero(computer.getPointer()), first);
+        }
+    },
+    OUT(IntComputer.getDataFor("OUT")) {
+        @Override
+        @SuppressWarnings("squid:S2142")
+        public void accept(IntComputer computer) {
+            Long instruction = computer.currentInstruction();
+            Long first = computer.getNextParameter(computer.getMode(instruction, 1));
+
+            try {
+                computer.getOut().put(first);
+            } catch (InterruptedException e) {
+                throw new AdventOfCodeException(e);
+            }
+        }
+
+        @Override
+        public String toString(IntComputer computer) {
+            Long instruction = computer.currentInstruction();
+            String first = computer.printParameter(computer.getMode(instruction, 1), 1);
+
+            return String.format("%s: print: %s", padZero(computer.getPointer()), first);
         }
     },
     RELATIVE_BASE(IntComputer.getDataFor("RELATIVE_BASE")) {
@@ -234,28 +234,28 @@ public enum OpCode implements Consumer<IntComputer> {
         this.data = data;
     }
 
-    public long getValue() {
-        return data.opcode();
+    @Override
+    public void accept(final IntComputer computer) {
+        // simply accept.
     }
 
     protected int getNumberOfParameters() {
         return data.numberParameters();
     }
 
-    public abstract String toString(final IntComputer computer);
-
-    @Override
-    public void accept(final IntComputer computer) {
-        // simply accept.
-    }
-
-    public static OpCode valueOf(long code) {
-        return OP_CODES.get(code);
+    public long getValue() {
+        return data.opcode();
     }
 
     private static String padZero(long num) {
         int pad = 4;
 
         return StringUtils.leftPad(Long.toString(num), pad, '0');
+    }
+
+    public abstract String toString(final IntComputer computer);
+
+    public static OpCode valueOf(long code) {
+        return OP_CODES.get(code);
     }
 }

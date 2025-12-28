@@ -4,16 +4,21 @@ import java.util.*
 import java.util.concurrent.BlockingQueue
 import kotlin.math.absoluteValue
 
-fun <T> List<T>.toPair(): Pair<T, T> =
-    Pair(get(0), get(1))
+fun <T> linkedListOf(vararg elements: T) =
+    elements
+        .toCollection(LinkedList())
 
-val IntArray.abs: Int
-    get() =
-        sumOf { it.absoluteValue }
+fun <T> priorityQueueOf(comparator: Comparator<T>, vararg args: T): PriorityQueue<T> {
+    val queue = PriorityQueue<T>(comparator)
 
-fun IntArray.mapToInt(transform: (Int) -> Int): IntArray =
-    IntArray(this.size) { transform(this[it]) }
+    queue.addAll(args)
 
+    return queue
+}
+
+/**********************************************************************************************************************
+ * BlockingQueue                                                                                                      *
+ **********************************************************************************************************************/
 fun <T> BlockingQueue<T>.drainToList(): List<T> {
     val outputList = mutableListOf<T>()
 
@@ -22,11 +27,34 @@ fun <T> BlockingQueue<T>.drainToList(): List<T> {
     return outputList
 }
 
-fun List<Int>.sumWith(other: List<Int>) =
-    zip(other, Int::plus)
+/**********************************************************************************************************************
+ * Collection                                                                                                         *
+ **********************************************************************************************************************/
+fun Collection<String>.filterNotEmpty(): Collection<String> =
+    filter(String::isNotEmpty)
 
-fun Iterable<Int>.product() =
-    reduce { acc, item -> acc * item }
+/**********************************************************************************************************************
+ * IntArray                                                                                                           *
+ **********************************************************************************************************************/
+val IntArray.abs: Int
+    get() =
+        sumOf { it.absoluteValue }
+
+fun IntArray.mapToInt(transform: (Int) -> Int): IntArray =
+    IntArray(this.size) { transform(this[it]) }
+
+/**********************************************************************************************************************
+ * Iterable                                                                                                           *
+ **********************************************************************************************************************/
+fun <A, B, R> Iterable<A>.cartesianProduct(other: Iterable<B>, transform: (A, B) -> R): List<R> =
+    flatMap { a -> other.map { b -> transform(a, b) } }
+
+fun <A> Iterable<A>.combinations(): List<Pair<A, A>> =
+    this
+        .pairwise(this)
+
+fun Iterable<Int>.digitsToInt(radix: Int) =
+    reduce { acc, digit -> acc * radix + digit }
 
 @SuppressWarnings("kotlin:S6532")
 fun <T : Comparable<T>> Iterable<T>.minAndMax(): Pair<T, T> {
@@ -51,16 +79,30 @@ fun <T : Comparable<T>> Iterable<T>.minAndMax(): Pair<T, T> {
     return min to max
 }
 
-fun <K, V> Map<K, V>.pivot() =
-    entries
-        .associate { (key, value) -> value to key }
+fun <A, B> Iterable<A>.pairwise(other: Iterable<B>): List<Pair<A, B>> =
+    flatMapIndexed { i, a ->
+        other
+            .drop(i + 1)
+            .map { b ->
+                a to b
+            }
+    }
 
-fun Iterable<Int>.digitsToInt(radix: Int) =
-    reduce { acc, digit -> acc * radix + digit }
+fun Iterable<Int>.product() =
+    reduce { acc, item -> acc * item }
 
-fun <A, B, R> Iterable<A>.cartesianProduct(other: Iterable<B>, transform: (A, B) -> R): List<R> =
-    flatMap { a -> other.map { b -> transform(a, b) } }
+/**********************************************************************************************************************
+ * List                                                                                                               *
+ **********************************************************************************************************************/
+fun <T> List<T>.toPair(): Pair<T, T> =
+    Pair(get(0), get(1))
 
+fun List<Int>.sumWith(other: List<Int>) =
+    zip(other, Int::plus)
+
+/**********************************************************************************************************************
+ * List<List>                                                                                                         *
+ **********************************************************************************************************************/
 fun <T> List<List<T>>.transpose(): List<List<T>> {
     return when {
         this.isEmpty() -> this
@@ -72,30 +114,9 @@ fun <T> List<List<T>>.transpose(): List<List<T>> {
     }
 }
 
-fun <T> priorityQueueOf(comparator: Comparator<T>, vararg args: T): PriorityQueue<T> {
-    val queue = PriorityQueue<T>(comparator)
-
-    queue.addAll(args)
-
-    return queue
-}
-
-fun <T> linkedListOf(vararg elements: T) =
-    elements
-        .toCollection(LinkedList())
-
-fun <A, B> Iterable<A>.pairwise(other: Iterable<B>): List<Pair<A, B>> =
-    flatMapIndexed { i, a ->
-        other
-            .drop(i + 1)
-            .map { b ->
-                a to b
-            }
-    }
-
-fun Collection<String>.filterNotEmpty(): Collection<String> =
-    filter(String::isNotEmpty)
-
-fun <A> Iterable<A>.combinations(): List<Pair<A, A>> =
-    this
-        .pairwise(this)
+/**********************************************************************************************************************
+ * Map                                                                                                                *
+ **********************************************************************************************************************/
+fun <K, V> Map<K, V>.pivot() =
+    entries
+        .associate { (key, value) -> value to key }

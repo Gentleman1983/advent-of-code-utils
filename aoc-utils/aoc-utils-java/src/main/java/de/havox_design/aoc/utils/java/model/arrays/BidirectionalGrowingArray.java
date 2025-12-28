@@ -5,11 +5,9 @@ import java.util.NoSuchElementException;
 import java.util.function.IntFunction;
 
 public class BidirectionalGrowingArray<T> implements Iterable<T> {
-
     private final IntFunction<T[]> arrayProducer;
 
-    T[] array;
-
+    private T[] array;
     private int offset;
 
     public BidirectionalGrowingArray(final IntFunction<T[]> arrayProducer) {
@@ -20,24 +18,6 @@ public class BidirectionalGrowingArray<T> implements Iterable<T> {
         this.arrayProducer = arrayProducer;
         this.array = arrayProducer.apply(0);
         this.offset = startIndex;
-    }
-
-    public T get(final int index) {
-        final int internalIndex = mapIndex(index);
-
-        return (internalIndex < 0 || internalIndex >= array.length) ? null : array[internalIndex];
-    }
-
-    public T put(final int index, final T newValue) {
-        int internalIndex = mapIndex(index);
-
-        internalIndex = checkSize(internalIndex);
-
-        final T result = array[internalIndex];
-
-        array[internalIndex] = newValue;
-
-        return result;
     }
 
     private int checkSize(final int neededInternalIndex) {
@@ -63,8 +43,10 @@ public class BidirectionalGrowingArray<T> implements Iterable<T> {
         return neededInternalIndex;
     }
 
-    private int mapIndex(final int index) {
-        return index - offset;
+    public T get(final int index) {
+        final int internalIndex = mapIndex(index);
+
+        return (internalIndex < 0 || internalIndex >= array.length) ? null : array[internalIndex];
     }
 
     public int[] getRange() throws ArrayIndexOutOfBoundsException {
@@ -77,10 +59,6 @@ public class BidirectionalGrowingArray<T> implements Iterable<T> {
 
     private boolean isEmpty() {
         return size() == 0;
-    }
-
-    public int size() {
-        return array.length;
     }
 
     @Override
@@ -102,5 +80,25 @@ public class BidirectionalGrowingArray<T> implements Iterable<T> {
                 }
             }
         };
+    }
+
+    private int mapIndex(final int index) {
+        return index - offset;
+    }
+
+    public T put(final int index, final T newValue) {
+        int internalIndex = mapIndex(index);
+
+        internalIndex = checkSize(internalIndex);
+
+        final T result = array[internalIndex];
+
+        array[internalIndex] = newValue;
+
+        return result;
+    }
+
+    public int size() {
+        return array.length;
     }
 }

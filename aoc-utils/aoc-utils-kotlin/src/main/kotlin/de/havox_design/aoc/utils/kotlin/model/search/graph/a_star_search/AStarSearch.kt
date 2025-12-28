@@ -2,6 +2,9 @@ package de.havox_design.aoc.utils.kotlin.model.search.graph.a_star_search
 
 import java.util.*
 
+/**********************************************************************************************************************
+ * Functions                                                                                                          *
+ **********************************************************************************************************************/
 inline fun <K> findShortestPath(
     start: K,
     end: K,

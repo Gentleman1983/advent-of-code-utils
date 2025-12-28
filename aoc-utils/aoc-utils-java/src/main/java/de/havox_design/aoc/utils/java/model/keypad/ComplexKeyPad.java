@@ -4,7 +4,6 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class ComplexKeyPad extends KeyPad {
-    private static KeyPad instance;
     public static final Key ONE = new Key(2, 0);
     public static final Key TWO = new Key(1, 1);
     public static final Key THREE = new Key(2, 1);
@@ -18,6 +17,8 @@ public class ComplexKeyPad extends KeyPad {
     public static final Key B = new Key(2, 3);
     public static final Key C = new Key(3, 3);
     public static final Key D = new Key(2, 4);
+
+    private static KeyPad instance;
     private static final Set<Key> KEYPAD = Set.of(ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, A, B, C, D);
 
     private ComplexKeyPad() {

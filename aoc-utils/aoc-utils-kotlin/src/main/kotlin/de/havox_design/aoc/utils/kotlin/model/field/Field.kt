@@ -3,12 +3,6 @@ package de.havox_design.aoc.utils.kotlin.model.field
 import de.havox_design.aoc.utils.kotlin.model.positions.Position2d
 
 data class Field<T>(val field: List<List<T>>) {
-
-    constructor(x: Int, y: Int, element: () -> T) : this(List(x * y) {
-        element.invoke()
-    }
-        .chunked(x))
-
     val numberOfX = field
         .first()
         .size
@@ -23,28 +17,46 @@ data class Field<T>(val field: List<List<T>>) {
                     }
             }
     }
-
     val xIndices = 0 until numberOfX
     val yIndices = 0 until numberOfY
 
-    operator fun get(position: Position2d<Int>) =
-        field[position.y][position.x]
+    /******************************************************************************************************************
+     * Constructors                                                                                                   *
+     ******************************************************************************************************************/
+    constructor(x: Int, y: Int, element: () -> T) : this(List(x * y) {
+        element.invoke()
+    }
+        .chunked(x))
+
+    /******************************************************************************************************************
+     * Operators                                                                                                      *
+     ******************************************************************************************************************/
 
     operator fun contains(position: Position2d<Int>): Boolean {
         return position.x in xIndices &&
                 position.y in yIndices
     }
 
-    fun search(element: T) = sequence {
-        (0 until numberOfY).flatMap { y ->
-            (0 until numberOfX).map { x ->
-                if (field[y][x] == element) {
-                    yield(Position2d(x, y))
+    operator fun get(position: Position2d<Int>) =
+        field[position.y][position.x]
+
+    /******************************************************************************************************************
+     * Functions                                                                                                      *
+     ******************************************************************************************************************/
+    fun highlight(highlight: (position: Position2d<Int>, cell: T) -> Boolean) {
+        val highlightColor = "\u001b[" + 43 + "m"
+        val defaultColor = "\u001b[" + 0 + "m"
+
+        this
+            .map { position, cell ->
+                if (highlight(position, cell)) {
+                    "$highlightColor$cell$defaultColor"
+                } else {
+                    cell.toString()
                 }
             }
-        }
+            .print()
     }
-
 
     fun insertAt(position: Position2d<Int>, element: T) =
         this
@@ -67,16 +79,6 @@ data class Field<T>(val field: List<List<T>>) {
                 }
             }
 
-    fun slice(xRange: IntRange, yRange: IntRange) =
-        field
-            .slice(yRange)
-            .map { row ->
-                row
-                    .slice(xRange)
-            }
-            .reversed()
-            .toField()
-
     fun <R> map(it: (position: Position2d<Int>, cell: T) -> R): Field<R> {
         return field
             .mapIndexed { y, xs ->
@@ -91,21 +93,25 @@ data class Field<T>(val field: List<List<T>>) {
             .toField()
     }
 
-    fun highlight(highlight: (position: Position2d<Int>, cell: T) -> Boolean) {
-        val highlightColor = "\u001b[" + 43 + "m"
-        val defaultColor = "\u001b[" + 0 + "m"
+    fun slice(xRange: IntRange, yRange: IntRange) =
+        field
+            .slice(yRange)
+            .map { row ->
+                row
+                    .slice(xRange)
+            }
+            .reversed()
+            .toField()
 
-        this
-            .map { position, cell ->
-                if (highlight(position, cell)) {
-                    "$highlightColor$cell$defaultColor"
-                } else {
-                    cell.toString()
+    fun search(element: T) = sequence {
+        (0 until numberOfY).flatMap { y ->
+            (0 until numberOfX).map { x ->
+                if (field[y][x] == element) {
+                    yield(Position2d(x, y))
                 }
             }
-            .print()
+        }
     }
-
 
     override fun toString() =
         field
@@ -115,10 +121,3 @@ data class Field<T>(val field: List<List<T>>) {
                     .joinToString(" ")
             }
 }
-
-fun <T> List<List<T>>.toField() =
-    Field(this.reversed())
-
-fun <T> T.print() =
-    this
-        .also { println(it) }

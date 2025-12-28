@@ -8,9 +8,8 @@ import java.util.logging.Logger;
 
 @SuppressWarnings("javaarchitecture:S7027")
 public class IntComputer implements Runnable {
-    private static final Logger LOGGER = Logger.getLogger(IntComputer.class.getName());
     private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
-    private static final boolean PRINT_HALT = false;
+    private static final Logger LOGGER = Logger.getLogger(IntComputer.class.getName());
     private static final Set<OpCodeData> OPCODES = Set.of(
             new OpCodeData("ADD", 1, 3),
             new OpCodeData("MULTIPLY", 2, 3),
@@ -24,13 +23,14 @@ public class IntComputer implements Runnable {
             new OpCodeData("HALT", 99, 0),
             new OpCodeData("NOP", -1, 0)
     );
+    private static final boolean PRINT_HALT = false;
 
-    private Map<Long, Long> memory;
-    private long pointer = 0L;
-    private long relativeBase = 0L;
-    private final boolean modes;
     private final BlockingQueue<Long> in;
+    private Map<Long, Long> memory;
+    private final boolean modes;
+    private long pointer = 0L;
     private final BlockingQueue<Long> out;
+    private long relativeBase = 0L;
 
     public IntComputer(final List<Long> program) {
         this(false, program, null, null);
@@ -47,32 +47,55 @@ public class IntComputer implements Runnable {
         loadProgram(program);
     }
 
-    public Map<Long, Long> getMemory() {
-        return memory;
+    public Long advancePointer() {
+        return ++pointer;
     }
 
-    protected long getPointer() {
-        return pointer;
+    protected Long currentInstruction() {
+        return getValueDirect(pointer);
     }
 
-    protected void setPointer(long value) {
-        pointer = value;
+    public boolean executeOneStep() {
+        final Optional<OpCode> opCode = getCurrentOpCode();
+
+        opCode.orElse(NOP).accept(this);
+        advancePointer();
+
+        return opCode.orElse(HALT) != HALT;
     }
 
-    protected long getRelativeBase() {
-        return relativeBase;
+    private void loadProgram(final List<Long> program) {
+        memory = new HashMap<>();
+
+        for (long i = 0L; i < program.size(); i++) {
+            memory.put(i, program.get((int) i));
+        }
     }
 
-    protected void setRelativeBase(long value) {
-        relativeBase = value;
+    private Optional<OpCode> getCurrentOpCode() {
+        long opCode = currentInstruction();
+
+        if (modes) {
+            opCode %= 100;
+        }
+
+        return Optional.ofNullable(OpCode.valueOf(opCode));
+    }
+
+    public static OpCodeData getDataFor(String opcodeName) {
+        return OPCODES
+                .stream()
+                .filter(opcode -> opcode.name().equalsIgnoreCase(opcodeName))
+                .findFirst()
+                .orElseThrow();
     }
 
     protected BlockingQueue<Long> getIn() {
         return in;
     }
 
-    protected BlockingQueue<Long> getOut() {
-        return out;
+    public Map<Long, Long> getMemory() {
+        return memory;
     }
 
     protected int getMode(final long value, final int param) {
@@ -93,8 +116,38 @@ public class IntComputer implements Runnable {
         }
     }
 
-    protected Long setNextParameter(final Long val, final int mode) {
-        return setValueIndirect(advancePointer(), val, mode == 2);
+    protected BlockingQueue<Long> getOut() {
+        return out;
+    }
+
+    protected long getPointer() {
+        return pointer;
+    }
+
+    public static boolean getPrintHalt() {
+        return PRINT_HALT;
+    }
+
+    protected long getRelativeBase() {
+        return relativeBase;
+    }
+
+    private Long getValueDirect(final Long address) {
+        return memory.getOrDefault(address, 0L);
+    }
+
+    private Long getValueIndirect(final Long index, final boolean relative) {
+        final long offSet = relative ? relativeBase : 0;
+
+        return getValueDirect(getValueDirect(index) + offSet);
+    }
+
+    public Optional<OpCode> printOneStep() {
+        final Optional<OpCode> opCode = getCurrentOpCode();
+
+        LOGGER.info(() -> opCode.orElse(NOP).toString(this));
+
+        return opCode;
     }
 
     protected String printParameter(final int mode, final int param) {
@@ -105,111 +158,6 @@ public class IntComputer implements Runnable {
         } else {
             return Long.toString(address);
         }
-    }
-
-    private Long getValueIndirect(final Long index, final boolean relative) {
-        final long offSet = relative ? relativeBase : 0;
-
-        return getValueDirect(getValueDirect(index) + offSet);
-    }
-
-    private Long getValueDirect(final Long address) {
-        return memory.getOrDefault(address, 0L);
-    }
-
-    private Long setValueIndirect(final Long index, final Long val, final boolean relative) {
-        final long offSet = relative ? relativeBase : 0;
-
-        return setValueDirect(getValueDirect(index) + offSet, val);
-    }
-
-    private Long setValueDirect(final Long address, final Long val) {
-        Objects.requireNonNull(val);
-
-        return memory.put(address, val);
-    }
-
-    private void loadProgram(final List<Long> program) {
-        memory = new HashMap<>();
-
-        for (long i = 0L; i < program.size(); i++) {
-            memory.put(i, program.get((int) i));
-        }
-    }
-
-    private void setPointer(final int pointer) {
-        this.pointer = pointer;
-    }
-
-    private Optional<OpCode> getCurrentOpCode() {
-        long opCode = currentInstruction();
-
-        if (modes) {
-            opCode %= 100;
-        }
-
-        return Optional.ofNullable(OpCode.valueOf(opCode));
-    }
-
-    @SuppressWarnings("squid:S1452")
-    public static Future<?> runComputer(final List<Long> program, final BlockingQueue<Long> in, final BlockingQueue<Long> out, final boolean async) {
-        final IntComputer computer = new IntComputer(program, in, out);
-        final Future<?> future;
-
-        if (async) {
-            future = computer.runAsync();
-        } else {
-            computer.run();
-            future = CompletableFuture.completedFuture(null);
-        }
-
-        return future;
-    }protected Long currentInstruction() {
-        return getValueDirect(pointer);
-    }
-
-    public boolean executeOneStep() {
-        final Optional<OpCode> opCode = getCurrentOpCode();
-
-        opCode.orElse(NOP).accept(this);
-        advancePointer();
-
-        return opCode.orElse(HALT) != HALT;
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            if (!executeOneStep()) {
-                return;
-            }
-        }
-    }
-
-    public Long advancePointer() {
-        return ++pointer;
-    }
-
-    public void reset() {
-        this.pointer = 0L;
-        this.relativeBase = 0L;
-    }
-
-    @SuppressWarnings("squid:S1452")
-    public Future<?> runAsync() {
-        return EXECUTOR.submit(this);
-    }
-
-    public static void shutdownAll() {
-        EXECUTOR.shutdown();
-    }
-
-    public Optional<OpCode> printOneStep() {
-        final Optional<OpCode> opCode = getCurrentOpCode();
-
-        LOGGER.info(() -> opCode.orElse(NOP).toString(this));
-
-        return opCode;
     }
 
     public void printProgram() {
@@ -228,15 +176,69 @@ public class IntComputer implements Runnable {
         this.pointer = origPointer;
     }
 
-    public static OpCodeData getDataFor(String opcodeName) {
-        return OPCODES
-                .stream()
-                .filter(opcode -> opcode.name().equalsIgnoreCase(opcodeName))
-                .findFirst()
-                .orElseThrow();
+    public void reset() {
+        this.pointer = 0L;
+        this.relativeBase = 0L;
     }
 
-    public static boolean getPrintHalt() {
-        return PRINT_HALT;
+    @Override
+    public void run() {
+        while (true) {
+            if (!executeOneStep()) {
+                return;
+            }
+        }
+    }
+
+    @SuppressWarnings("squid:S1452")
+    public Future<?> runAsync() {
+        return EXECUTOR.submit(this);
+    }
+
+    @SuppressWarnings("squid:S1452")
+    public static Future<?> runComputer(final List<Long> program, final BlockingQueue<Long> in, final BlockingQueue<Long> out, final boolean async) {
+        final IntComputer computer = new IntComputer(program, in, out);
+        final Future<?> future;
+
+        if (async) {
+            future = computer.runAsync();
+        } else {
+            computer.run();
+            future = CompletableFuture.completedFuture(null);
+        }
+
+        return future;
+    }
+
+    protected Long setNextParameter(final Long val, final int mode) {
+        return setValueIndirect(advancePointer(), val, mode == 2);
+    }
+
+    protected void setPointer(long value) {
+        pointer = value;
+    }
+
+    private void setPointer(final int pointer) {
+        this.pointer = pointer;
+    }
+
+    protected void setRelativeBase(long value) {
+        relativeBase = value;
+    }
+
+    private Long setValueDirect(final Long address, final Long val) {
+        Objects.requireNonNull(val);
+
+        return memory.put(address, val);
+    }
+
+    private Long setValueIndirect(final Long index, final Long val, final boolean relative) {
+        final long offSet = relative ? relativeBase : 0;
+
+        return setValueDirect(getValueDirect(index) + offSet, val);
+    }
+
+    public static void shutdownAll() {
+        EXECUTOR.shutdown();
     }
 }

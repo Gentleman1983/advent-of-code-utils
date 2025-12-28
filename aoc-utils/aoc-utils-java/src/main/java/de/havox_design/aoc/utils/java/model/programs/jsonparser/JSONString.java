@@ -4,7 +4,6 @@ import java.util.List;
 
 @SuppressWarnings("javaarchitecture:S7027")
 public final class JSONString implements CharSequence, JSONEntity {
-
     private String string;
 
     public JSONString(String string) {
@@ -12,23 +11,8 @@ public final class JSONString implements CharSequence, JSONEntity {
     }
 
     @Override
-    public int length() {
-        return string.length();
-    }
-
-    @Override
     public char charAt(int index) {
         return string.charAt(index);
-    }
-
-    @Override
-    public CharSequence subSequence(int start, int end) {
-        return string.subSequence(start, end);
-    }
-
-    @Override
-    public String toString() {
-        return "'" + string + "'";
     }
 
     @Override
@@ -40,13 +24,27 @@ public final class JSONString implements CharSequence, JSONEntity {
     }
 
     @Override
+    public List<Integer> getIntegersWithoutRed() {
+        return List.of();
+    }
+
+    @Override
     public int hashCode() {
         return string.hashCode();
     }
 
     @Override
-    public List<Integer> getIntegersWithoutRed() {
-        return List.of();
+    public int length() {
+        return string.length();
     }
 
+    @Override
+    public CharSequence subSequence(int start, int end) {
+        return string.subSequence(start, end);
+    }
+
+    @Override
+    public String toString() {
+        return "'" + string + "'";
+    }
 }

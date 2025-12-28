@@ -3,13 +3,19 @@ package de.havox_design.aoc.utils.kotlin.model.chargrid
 import de.havox_design.aoc.utils.kotlin.model.positions.Position2d
 
 class CharGrid(val data: Array<CharArray>) : Iterable<PointVal> {
-    val rowindices: IntRange
+    val rowIndices: IntRange
         get() = IntRange(0, data.lastIndex)
-    val colindices: IntRange
+    val colIndices: IntRange
         get() = IntRange(0, data[0].lastIndex)
 
+    /******************************************************************************************************************
+     * Constructors                                                                                                   *
+     ******************************************************************************************************************/
     constructor(data: List<CharArray>) : this(data.toTypedArray())
 
+    /******************************************************************************************************************
+     * Operators                                                                                                      *
+     ******************************************************************************************************************/
     operator fun get(rowindex: Int): CharArray {
         return data[rowindex]
     }
@@ -19,7 +25,7 @@ class CharGrid(val data: Array<CharArray>) : Iterable<PointVal> {
     }
 
     operator fun get(point: Position2d<Int>): Char {
-        return data[rowindices.last - point.y][point.x]
+        return data[rowIndices.last - point.y][point.x]
     }
 
     operator fun set(rowindex: Int, colindex: Int, value: Char) {
@@ -27,60 +33,14 @@ class CharGrid(val data: Array<CharArray>) : Iterable<PointVal> {
     }
 
     operator fun set(point: Position2d<Int>, value: Char) {
-        data[rowindices.last - point.y][point.x] = value
+        data[rowIndices.last - point.y][point.x] = value
     }
 
-    fun isValidPosition(row: Int, col: Int): Boolean {
-        return row in rowindices && col in colindices
-    }
-
-    fun isValidPosition(pos: Pair<Int, Int>): Boolean {
-        return pos.first in rowindices && pos.second in colindices
-    }
-
-    fun isValidPosition(point: Position2d<Int>): Boolean {
-        return (rowindices.last - point.y) in rowindices && point.x in colindices
-    }
-
+    /******************************************************************************************************************
+     * Functions                                                                                                      *
+     ******************************************************************************************************************/
     fun copy(): CharGrid {
         return CharGrid(data.map { it.copyOf() }.toTypedArray())
-    }
-
-
-    init {
-        require(data.isNotEmpty()) { "Grid must have at least one row" }
-        require(data.all { it.size == data[0].size }) { "All rows must have the same length" }
-    }
-
-    override fun iterator(): Iterator<PointVal> {
-        class PointValIterator(val grid: CharGrid) : Iterator<PointVal> {
-
-            private var row = 0
-            private var col = 0
-
-            override fun hasNext(): Boolean {
-                return col <= grid.colindices.last && row <= grid.rowindices.last
-            }
-
-            override fun next(): PointVal {
-                val res = try {
-                    val point = Position2d(col, row)
-                    PointVal(point, grid[point])
-                } catch (_: IndexOutOfBoundsException) {
-                    throw NoSuchElementException()
-                }
-                ++col
-
-                if (col > grid.colindices.last) {
-                    col = 0
-                    ++row
-                }
-
-                return res
-            }
-        }
-
-        return PointValIterator(this)
     }
 
     override fun equals(other: Any?): Boolean {
@@ -92,11 +52,11 @@ class CharGrid(val data: Array<CharArray>) : Iterable<PointVal> {
             return false
         }
 
-        if (this.rowindices != other.rowindices || this.colindices != other.colindices) {
+        if (this.rowIndices != other.rowIndices || this.colIndices != other.colIndices) {
             return false
         }
         this
-            .rowindices
+            .rowIndices
             .forEach { row ->
                 if (!this.data[row].contentEquals(other.data[row])) {
                     return false
@@ -116,6 +76,57 @@ class CharGrid(val data: Array<CharArray>) : Iterable<PointVal> {
             }
 
         return hash
+    }
+
+    fun isValidPosition(row: Int, col: Int): Boolean {
+        return row in rowIndices && col in colIndices
+    }
+
+    fun isValidPosition(pos: Pair<Int, Int>): Boolean {
+        return pos.first in rowIndices && pos.second in colIndices
+    }
+
+    fun isValidPosition(point: Position2d<Int>): Boolean {
+        return (rowIndices.last - point.y) in rowIndices && point.x in colIndices
+    }
+
+    override fun iterator(): Iterator<PointVal> {
+        class PointValIterator(val grid: CharGrid) : Iterator<PointVal> {
+
+            private var row = 0
+            private var col = 0
+
+            override fun hasNext(): Boolean {
+                return col <= grid.colIndices.last && row <= grid.rowIndices.last
+            }
+
+            override fun next(): PointVal {
+                val res = try {
+                    val point = Position2d(col, row)
+                    PointVal(point, grid[point])
+                } catch (_: IndexOutOfBoundsException) {
+                    throw NoSuchElementException()
+                }
+                ++col
+
+                if (col > grid.colIndices.last) {
+                    col = 0
+                    ++row
+                }
+
+                return res
+            }
+        }
+
+        return PointValIterator(this)
+    }
+
+    /******************************************************************************************************************
+     * Initialization                                                                                                 *
+     ******************************************************************************************************************/
+    init {
+        require(data.isNotEmpty()) { "Grid must have at least one row" }
+        require(data.all { it.size == data[0].size }) { "All rows must have the same length" }
     }
 
     companion object {

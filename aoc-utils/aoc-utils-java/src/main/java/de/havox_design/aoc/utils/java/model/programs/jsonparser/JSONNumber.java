@@ -29,6 +29,35 @@ public final class JSONNumber extends Number implements JSONEntity {
         this.number = number;
     }
 
+    public static boolean canBeInnerPartOfANumber(char c) {
+        if (c == '-') {
+            return false;
+        }
+        if (c == '.') {
+            return true;
+        }
+        return NUMBER_STARTERS.contains(c);
+    }
+
+    public static boolean canBeStartOfANumber(char c) {
+        return NUMBER_STARTERS.contains(c);
+    }
+
+    @Override
+    public double doubleValue() {
+        return number.doubleValue();
+    }
+
+    @Override
+    public float floatValue() {
+        return number.floatValue();
+    }
+
+    @Override
+    public List<Integer> getIntegersWithoutRed() {
+        return List.of(number.intValue());
+    }
+
     @Override
     public int intValue() {
         return number.intValue();
@@ -40,37 +69,7 @@ public final class JSONNumber extends Number implements JSONEntity {
     }
 
     @Override
-    public float floatValue() {
-        return number.floatValue();
-    }
-
-    @Override
-    public double doubleValue() {
-        return number.doubleValue();
-    }
-
-    @Override
     public String toString() {
         return number.toString();
     }
-
-    @Override
-    public List<Integer> getIntegersWithoutRed() {
-        return List.of(number.intValue());
-    }
-
-    public static boolean canBeStartOfANumber(char c) {
-        return NUMBER_STARTERS.contains(c);
-    }
-
-    public static boolean canBeInnerPartOfANumber(char c) {
-        if (c == '-') {
-            return false;
-        }
-        if (c == '.') {
-            return true;
-        }
-        return NUMBER_STARTERS.contains(c);
-    }
-
 }
