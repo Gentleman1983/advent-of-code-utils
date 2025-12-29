@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
+/**
+ * The opcode enums.
+ */
 @SuppressWarnings("javaarchitecture:S7027")
 public enum OpCode implements Consumer<IntComputer> {
     ADD(IntComputer.getDataFor("ADD")) {
@@ -29,7 +32,6 @@ public enum OpCode implements Consumer<IntComputer> {
 
             return String.format("%s: %s = %s + %s", padZero(computer.getPointer()), third, first, second);
         }
-
     },
     EQUALS(IntComputer.getDataFor("EQUALS")) {
         @Override
@@ -219,17 +221,34 @@ public enum OpCode implements Consumer<IntComputer> {
         }
     };
 
+    /**
+     * The logger.
+     */
     private static final Logger LOGGER = Logger.getLogger(OpCode.class.getName());
+    /**
+     * All opcodes.
+     */
     private static final Map<Long, OpCode> OP_CODES = new HashMap<>();
 
+    /**
+     * Static initializer for the opcode map.
+     */
     static {
         for (final OpCode op : OpCode.values()) {
             OP_CODES.put(op.getValue(), op);
         }
     }
 
+    /**
+     * The data structure.
+     */
     private final OpCodeData data;
 
+    /**
+     * The constructor.
+     *
+     * @param data the data structure
+     */
     OpCode(OpCodeData data) {
         this.data = data;
     }
@@ -239,22 +258,50 @@ public enum OpCode implements Consumer<IntComputer> {
         // simply accept.
     }
 
+    /**
+     * Helper mehtod providing the number of parameters of this opcode.
+     *
+     * @return the number of parameters
+     */
     protected int getNumberOfParameters() {
         return data.numberParameters();
     }
 
+    /**
+     * Helper method providing the opcode value.
+     *
+     * @return the opcode value
+     */
     public long getValue() {
         return data.opcode();
     }
 
+    /**
+     * Pads zeros to the left for a given data length.
+     *
+     * @param num the number to pad
+     * @return the passed number
+     */
     private static String padZero(long num) {
         int pad = 4;
 
         return StringUtils.leftPad(Long.toString(num), pad, '0');
     }
 
+    /**
+     * The to String function for a given {@link IntComputer}.
+     *
+     * @param computer the computer
+     * @return the to String
+     */
     public abstract String toString(final IntComputer computer);
 
+    /**
+     * Helper fuction returing the {@link OpCode} for the given opcode value.
+     *
+     * @param code the code
+     * @return the corresponding {@link OpCode}
+     */
     public static OpCode valueOf(long code) {
         return OP_CODES.get(code);
     }
