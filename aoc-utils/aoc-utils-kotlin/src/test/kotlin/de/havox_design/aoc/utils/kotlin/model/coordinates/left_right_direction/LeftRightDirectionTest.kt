@@ -3,6 +3,11 @@ package de.havox_design.aoc.utils.kotlin.model.coordinates.left_right_direction
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
+/**
+ * Test for LeftRightDirection class.
+ *
+ * @constructor Creates test
+ */
 class LeftRightDirectionTest {
     @Test
     fun testBasic() {

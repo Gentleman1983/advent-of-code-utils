@@ -3,6 +3,9 @@ package de.havox_design.aoc.utils.java.search.breadth_first_search;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for {@link PathResult}.
+ */
 class PathResultTest {
     @Test
     void testBasic() {
