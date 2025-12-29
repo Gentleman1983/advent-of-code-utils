@@ -16,6 +16,7 @@ public class AdventOfCodeException extends RuntimeException {
 
     /**
      * Creates the exception with a source exception and uses the source exceptions message.
+     *
      * @param e the source exception
      */
     public AdventOfCodeException(Exception e) {

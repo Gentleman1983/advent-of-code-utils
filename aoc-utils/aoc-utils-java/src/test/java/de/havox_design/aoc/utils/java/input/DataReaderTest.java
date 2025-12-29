@@ -15,8 +15,17 @@ import java.util.stream.Stream;
 /**
  * Test class for {@link DataReader}.
  */
-
 class DataReaderTest {
+    /**
+     * <b>Given</b>: A file name and the expected entries.
+     * <br/>
+     * <b>When</b>: Reading the files.
+     * <br/>
+     * <b>Then</b>: The correct data should be read from these files.
+     *
+     * @param fileName the file name
+     * @param expectedEntries the expected content
+     */
     @ParameterizedTest
     @MethodSource("getDataForReadFile")
     void testReadFile(String fileName, List<String> expectedEntries) {
@@ -33,6 +42,11 @@ class DataReaderTest {
         );
     }
 
+    /**
+     * Data for {@link #testReadFile(String, List)}.
+     *
+     * @return the test data
+     */
     private static Stream<Arguments> getDataForReadFile() {
         return Stream.of(
                 Arguments.of(
@@ -53,12 +67,26 @@ class DataReaderTest {
         );
     }
 
+    /**
+     * <b>Given</b>: An invalid file name.
+     * <br/>
+     * <b>When</b>: Reading the file content.
+     * <br/>
+     * <b>Then</b>: It should trigger a {@link ReadDataException}.
+     *
+     * @param fileName the invalid file names
+     */
     @ParameterizedTest
     @MethodSource("getDataForReadFileException")
     void testReadFileException(String fileName) {
         assertThrows(ReadDataException.class, () -> DataReader.readData(fileName, DataReaderTest.class));
     }
 
+    /**
+     * The data for {@link #testReadFileException(String)}.
+     *
+     * @return the test data
+     */
     private static Stream<Arguments> getDataForReadFileException() {
         return Stream.of(
                 Arguments.of("http://foo.bar/test.txt"),
