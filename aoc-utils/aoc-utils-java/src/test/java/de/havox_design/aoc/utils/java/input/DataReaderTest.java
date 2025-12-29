@@ -79,7 +79,10 @@ class DataReaderTest {
     @ParameterizedTest
     @MethodSource("getDataForReadFileException")
     void testReadFileException(String fileName) {
-        assertThrows(ReadDataException.class, () -> DataReader.readData(fileName, DataReaderTest.class));
+        assertAll(
+                () -> assertThrows(ReadDataException.class, () -> DataReader.readData(fileName, DataReaderTest.class)),
+                () -> assertThrows(ReadDataException.class, () -> DataReader.readString(fileName, DataReaderTest.class))
+        );
     }
 
     /**
