@@ -1,0 +1,11 @@
+package de.havox_design.aoc.utils.kotlin.helpers.math
+
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
+
+class LongHelperTest {
+    @Test
+    fun testBasic() {
+        Assertions.assertTrue(true)
+    }
+}

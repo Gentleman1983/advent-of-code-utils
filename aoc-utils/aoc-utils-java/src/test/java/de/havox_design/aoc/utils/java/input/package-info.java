@@ -1,0 +1,1 @@
+package de.havox_design.aoc.utils.java.input;

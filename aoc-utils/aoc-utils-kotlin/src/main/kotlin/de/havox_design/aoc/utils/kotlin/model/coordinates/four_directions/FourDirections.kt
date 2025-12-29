@@ -1,0 +1,46 @@
+package de.havox_design.aoc.utils.kotlin.model.coordinates.four_directions
+
+import de.havox_design.aoc.utils.kotlin.model.coordinates.coordinate.Coordinate
+
+enum class FourDirections(private val direction: Coordinate) {
+    DOWN(Coordinate(0, -1)),
+    LEFT(Coordinate(-1, 0)),
+    RIGHT(Coordinate(1, 0)),
+    UP(Coordinate(0, 1));
+
+    /******************************************************************************************************************
+     * Operators                                                                                                      *
+     ******************************************************************************************************************/
+    operator fun plus(other: Coordinate) =
+        direction + other
+
+    /******************************************************************************************************************
+     * Functions                                                                                                      *
+     ******************************************************************************************************************/
+    fun dx(): Int =
+        direction.x
+
+    fun dy(): Int =
+        direction.y
+
+    fun turnAround() = when (this) {
+        UP -> DOWN
+        DOWN -> UP
+        LEFT -> RIGHT
+        RIGHT -> LEFT
+    }
+
+    fun turnLeft() = when (this) {
+        UP -> LEFT
+        LEFT -> DOWN
+        DOWN -> RIGHT
+        RIGHT -> UP
+    }
+
+    fun turnRight() = when (this) {
+        UP -> RIGHT
+        RIGHT -> DOWN
+        DOWN -> LEFT
+        LEFT -> UP
+    }
+}

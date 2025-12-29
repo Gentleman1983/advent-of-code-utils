@@ -1,6 +1,6 @@
 package de.havox_design.aoc.utils.kotlin.model.field
 
-import de.havox_design.aoc.utils.kotlin.model.positions.Position2d
+import de.havox_design.aoc.utils.kotlin.model.positions.position_2d.Position2d
 
 data class Field<T>(val field: List<List<T>>) {
     val numberOfX = field
