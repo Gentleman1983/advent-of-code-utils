@@ -1,1 +1,5 @@
 package de.havox_design.aoc.utils.java.search.breadth_first_search;
+
+/**
+ * This package contains the Java utilities regarding breath first search.
+ */
