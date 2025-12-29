@@ -49,7 +49,10 @@ class JavaMathUtilsTest {
             "2,3,6",
             "1,17,17",
             "2,34,34",
-            "3,34,102"
+            "3,34,102",
+            "0,1,0",
+            "1,0,0",
+            "0,0,0"
     })
     void testLeastCommonMultiple(long a, long b, long expected) {
         Assertions.assertEquals(expected, JavaMathUtils.leastCommonMultiple(a, b));
