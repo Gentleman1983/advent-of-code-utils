@@ -1,7 +1,7 @@
 package de.havox_design.aoc.utils.java.model.keypad;
 
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ComplexKeyPad extends KeyPad {
     public static final Key ONE = new Key(2, 0);
@@ -19,7 +19,22 @@ public class ComplexKeyPad extends KeyPad {
     public static final Key D = new Key(2, 4);
 
     private static KeyPad instance;
-    private static final Set<Key> KEYPAD = Set.of(ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, A, B, C, D);
+    private static final Map<Key, String> KEYPAD = new HashMap<>();
+    static {
+        KEYPAD.put(ONE, "1");
+        KEYPAD.put(TWO, "2");
+        KEYPAD.put(THREE, "3");
+        KEYPAD.put(FOUR, "4");
+        KEYPAD.put(FIVE, "5");
+        KEYPAD.put(SIX, "6");
+        KEYPAD.put(SEVEN, "7");
+        KEYPAD.put(EIGHT, "8");
+        KEYPAD.put(NINE, "9");
+        KEYPAD.put(A, "A");
+        KEYPAD.put(B, "B");
+        KEYPAD.put(C, "C");
+        KEYPAD.put(D, "D");
+    }
 
     private ComplexKeyPad() {
         super();
@@ -34,40 +49,7 @@ public class ComplexKeyPad extends KeyPad {
     }
 
     @Override
-    public Set<Key> getKeypadElements() {
+    protected Map<Key, String> getKeyMap() {
         return KEYPAD;
-    }
-
-    @Override
-    public String getValueForKey(Key key) {
-        if (ONE.equals(key)) {
-            return "1";
-        } else if (TWO.equals(key)) {
-            return "2";
-        } else if (THREE.equals(key)) {
-            return "3";
-        } else if (FOUR.equals(key)) {
-            return "4";
-        } else if (FIVE.equals(key)) {
-            return "5";
-        } else if (SIX.equals(key)) {
-            return "6";
-        } else if (SEVEN.equals(key)) {
-            return "7";
-        } else if (EIGHT.equals(key)) {
-            return "8";
-        } else if (NINE.equals(key)) {
-            return "9";
-        } else if (A.equals(key)) {
-            return "A";
-        } else if (B.equals(key)) {
-            return "B";
-        } else if (C.equals(key)) {
-            return "C";
-        } else if (D.equals(key)) {
-            return "D";
-        } else {
-            throw new NoSuchElementException("This is no Keypad element.");
-        }
     }
 }
