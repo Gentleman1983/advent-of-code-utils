@@ -13,6 +13,16 @@ import java.util.stream.Stream;
  * Test class for {@link BlankLinePartitioner}.
  */
 class BlankLinePartitionerTest {
+    /**
+     * <b>Given</b>: Several lists of texts.
+     * <br/>
+     * <b>When</b>: Partitioning these lists.
+     * <br/>
+     * <b>Then</b>: These are partitioned by the blank rows.
+     *
+     * @param input the input list
+     * @param expectedResult the expected partition
+     */
     @ParameterizedTest
     @MethodSource("getDataForPartitioningTest")
     void testPartitioning(List<String> input, List<List<String>> expectedResult) {
@@ -23,6 +33,11 @@ class BlankLinePartitionerTest {
         Assertions.assertIterableEquals(expectedResult, result);
     }
 
+    /**
+     * Generates data for {@link #testPartitioning(List, List)}.
+     *
+     * @return the data
+     */
     private static Stream<Arguments> getDataForPartitioningTest() {
         return Stream.of(
                 Arguments.of(
