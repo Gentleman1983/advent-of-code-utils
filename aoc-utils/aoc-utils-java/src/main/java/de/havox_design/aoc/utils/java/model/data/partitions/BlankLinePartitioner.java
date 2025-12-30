@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * {@link Partitioner} for text entries by blank rows.
+ */
 public class BlankLinePartitioner implements Partitioner<String> {
     @Override
     public List<List<String>> partition(List<String> lines) {
