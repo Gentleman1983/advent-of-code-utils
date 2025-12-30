@@ -74,6 +74,7 @@ public class AoC2019Day02ProgramAlarm1202 implements AoCFunctionality {
         IntComputer computer = new IntComputer(program);
 
         computer.run();
+        computer.printProgram();
 
         return computer
                 .getMemory()
