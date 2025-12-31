@@ -18,7 +18,22 @@ class AoC2017Day18DuetTest {
 
     private static Stream<Arguments> getDataForPart1() {
         return Stream.of(
-                Arguments.of("de/havox_design/aoc2017/day18/day18Sample.txt", BigInteger.valueOf(4))
+                Arguments.of("de/havox_design/aoc2017/day18/day18Sample1.txt", BigInteger.valueOf(4)),
+                Arguments.of("de/havox_design/aoc2017/day18/day18Sample3.txt", BigInteger.valueOf(3423))
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("getDataForPart2")
+    void testPart2(String fileName, BigInteger expected) {
+        Assertions.assertEquals(expected, AoC2017Day18Duet.solvePart2(fileName));
+    }
+
+    private static Stream<Arguments> getDataForPart2() {
+        return Stream.of(
+                Arguments.of("de/havox_design/aoc2017/day18/day18Sample1.txt", BigInteger.valueOf(1)),
+                Arguments.of("de/havox_design/aoc2017/day18/day18Sample2.txt", BigInteger.valueOf(3)),
+                Arguments.of("de/havox_design/aoc2017/day18/day18Sample3.txt", BigInteger.valueOf(7493))
         );
     }
 }
