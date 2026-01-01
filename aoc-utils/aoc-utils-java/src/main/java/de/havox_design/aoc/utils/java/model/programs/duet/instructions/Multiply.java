@@ -6,15 +6,33 @@ import de.havox_design.aoc.utils.java.model.programs.duet.token.TokenProvider;
 
 import java.math.BigInteger;
 
+/**
+ * The add {@link Instruction}.
+ */
 public class Multiply implements Instruction {
+    /**
+     * The factor {@link Token}.
+     */
     private final Token factor;
+    /**
+     * The variable name.
+     */
     private final String variableName;
 
+    /**
+     * The Constructor.
+     *
+     * @param variableName the variable name
+     * @param value the value
+     */
     public Multiply(final String variableName, final String value) {
         this.variableName = variableName;
         this.factor = TokenProvider.createToken(value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void execute(final State state) {
         BigInteger currentValue = state.getValue(variableName);

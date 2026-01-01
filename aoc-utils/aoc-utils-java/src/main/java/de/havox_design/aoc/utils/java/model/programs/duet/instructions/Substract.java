@@ -6,21 +6,39 @@ import de.havox_design.aoc.utils.java.model.programs.duet.token.TokenProvider;
 
 import java.math.BigInteger;
 
+/**
+ * The add {@link Instruction}.
+ */
 public class Substract implements Instruction {
-    private final String varName;
+    /**
+     * The variable name.
+     */
+    private final String variableName;
+    /**
+     * The subtrahend {@link Token}.
+     */
     private final Token subtrahend;
 
-    public Substract(final String varName, final String value) {
-        this.varName = varName;
+    /**
+     * The Constructor.
+     *
+     * @param variableName the variable name
+     * @param value the value
+     */
+    public Substract(final String variableName, final String value) {
+        this.variableName = variableName;
         this.subtrahend = TokenProvider.createToken(value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void execute(final State state) {
-        BigInteger currentValue = state.getValue(varName);
+        BigInteger currentValue = state.getValue(variableName);
 
         currentValue = currentValue.subtract(subtrahend.intValue(state));
 
-        state.setValue(varName, currentValue);
+        state.setValue(variableName, currentValue);
     }
 }
