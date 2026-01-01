@@ -8,9 +8,6 @@ This document provides an overview to the changes on the different releases...
 * Refactored some classes.
 * Added unit tests.
 
-## 2025.3.1
-* Added unit tests.
-
 ## 2025.3.0
 * Update `de.havox_design.aoc.utils.kotlin.LeftRightDirection` to work for 
 [AoC 2025](https://github.com/Gentleman1983/advent-of-code-2025) day 1.
@@ -81,6 +78,7 @@ day 4.
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
