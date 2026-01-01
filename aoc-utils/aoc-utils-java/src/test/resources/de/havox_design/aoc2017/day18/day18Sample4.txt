@@ -1,0 +1,7 @@
+set a 100
+set b 0
+add a 2
+sub a 60
+jnz b -1
+snd a
+rcv a

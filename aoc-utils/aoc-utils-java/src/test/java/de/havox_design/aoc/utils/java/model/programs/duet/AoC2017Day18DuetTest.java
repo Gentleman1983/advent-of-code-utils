@@ -19,7 +19,8 @@ class AoC2017Day18DuetTest {
     private static Stream<Arguments> getDataForPart1() {
         return Stream.of(
                 Arguments.of("de/havox_design/aoc2017/day18/day18Sample1.txt", BigInteger.valueOf(4)),
-                Arguments.of("de/havox_design/aoc2017/day18/day18Sample3.txt", BigInteger.valueOf(3423))
+                Arguments.of("de/havox_design/aoc2017/day18/day18Sample3.txt", BigInteger.valueOf(3423)),
+                Arguments.of("de/havox_design/aoc2017/day18/day18Sample4.txt", BigInteger.valueOf(42))
         );
     }
 
