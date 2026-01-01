@@ -4,6 +4,8 @@ equalsverifier = "4.2.6"
 hamcrest = "3.0"
 junit5 = "6.0.1"
 kotlin-jvm = "2.3.0"
+mockito = "5.21.0"
+mockito-kotlin = "6.1.0"
 sonarqube-plugin = "7.2.2.6593"
 struts2 = "7.1.1"
 
@@ -12,6 +14,9 @@ commons-collections4 = { group = "org.apache.commons", name = "commons-collectio
 equalsverifier = { group = "nl.jqno.equalsverifier", name = "equalsverifier", version.ref = "equalsverifier" }
 hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = "hamcrest" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit5" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mockito" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "org.mockito.kotlin", version.ref = "mockito-kotlin" }
 struts2-core = { group = "org.apache.struts", name = "struts2-core", version.ref = "struts2" }
 
 [plugins]

@@ -11,4 +11,5 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(libs.mockito.kotlin)
 }

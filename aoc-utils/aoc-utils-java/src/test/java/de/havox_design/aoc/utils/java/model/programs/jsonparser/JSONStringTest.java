@@ -1,14 +1,17 @@
 package de.havox_design.aoc.utils.java.model.programs.jsonparser;
 
-import org.junit.jupiter.api.Assertions;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test class for {@link JSONString}.
+ * Test for {@link JSONString} class.
  */
 class JSONStringTest {
+    /**
+     * Tests the equals contract.
+     */
     @Test
-    void testBasic() {
-        Assertions.assertTrue(true);
+    void equalsContract() {
+        EqualsVerifier.simple().forClass(JSONString.class).withNonnullFields("string").verify();
     }
 }
