@@ -1,8 +1,9 @@
 # Version change log
 This document provides an overview to the changes on the different releases...
 
-## 2025.3.current
-* t.b.d.
+## 2026.0.0
+* Refactored some classes.
+* Added unit tests.
 
 ## 2025.3.1
 * Added unit tests.
