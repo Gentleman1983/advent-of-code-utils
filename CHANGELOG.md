@@ -7,6 +7,7 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.1
 * Refactored some classes.
 * Added unit tests.
+* Update dependency nl.jqno.equalsverifier:equalsverifier to v4.3
 
 ## 2026.0.0
 * Refactored some classes.
@@ -82,6 +83,7 @@ day 4.
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
