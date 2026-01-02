@@ -1,6 +1,6 @@
 [versions]
 commons-collections4 = "4.5.0"
-equalsverifier = "4.2.6"
+equalsverifier = "4.3"
 hamcrest = "3.0"
 junit5 = "6.0.1"
 kotlin-jvm = "2.3.0"
