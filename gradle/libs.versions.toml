@@ -16,7 +16,7 @@ hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = "hamcrest"
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit5" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
 mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mockito" }
-mockito-kotlin = { group = "org.mockito.kotlin", name = "org.mockito.kotlin", version.ref = "mockito-kotlin" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito-kotlin" }
 struts2-core = { group = "org.apache.struts", name = "struts2-core", version.ref = "struts2" }
 
 [plugins]

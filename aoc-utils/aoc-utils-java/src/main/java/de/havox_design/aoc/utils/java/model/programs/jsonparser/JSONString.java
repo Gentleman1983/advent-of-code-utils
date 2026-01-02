@@ -1,20 +1,22 @@
 package de.havox_design.aoc.utils.java.model.programs.jsonparser;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
- *
+ * This represents a JSON string.
  */
 @SuppressWarnings("javaarchitecture:S7027")
 public final class JSONString implements CharSequence, JSONEntity {
     /**
-     *
+     * The string.
      */
     private String string;
 
     /**
+     * The constructor.
      *
-     * @param string
+     * @param string the string
      */
     public JSONString(String string) {
         this.string = string;
@@ -63,6 +65,7 @@ public final class JSONString implements CharSequence, JSONEntity {
     /**
      * {@inheritDoc}
      */
+    @Nonnull
     @Override
     public CharSequence subSequence(int start, int end) {
         return string.subSequence(start, end);
@@ -71,6 +74,7 @@ public final class JSONString implements CharSequence, JSONEntity {
     /**
      * {@inheritDoc}
      */
+    @Nonnull
     @Override
     public String toString() {
         return "'" + string + "'";

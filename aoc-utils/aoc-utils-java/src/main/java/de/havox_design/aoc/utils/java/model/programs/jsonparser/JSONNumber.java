@@ -5,18 +5,18 @@ import java.util.List;
 import java.util.Set;
 
 /**
- *
+ * The JSON number class.
  */
 @SuppressWarnings("javaarchitecture:S7027")
 public final class JSONNumber extends Number implements JSONEntity {
     /**
-     *
+     * The serial version UID.
      */
     @Serial
     private static final long serialVersionUID = 1L;
 
     /**
-     *
+     * The potential number characters.
      */
     private static final Set<Character> NUMBER_STARTERS = Set.of(
             '-',
@@ -33,22 +33,24 @@ public final class JSONNumber extends Number implements JSONEntity {
     );
 
     /**
-     *
+     * The number.
      */
     private final Number number;
 
     /**
+     * The constructor.
      *
-     * @param number
+     * @param number the number
      */
     public JSONNumber(Number number) {
         this.number = number;
     }
 
     /**
+     * Checks if the character can be inner part of the number.
      *
-     * @param c
-     * @return
+     * @param c the character
+     * @return true, if it can be the inner part
      */
     public static boolean canBeInnerPartOfANumber(char c) {
         if (c == '-') {
@@ -61,9 +63,10 @@ public final class JSONNumber extends Number implements JSONEntity {
     }
 
     /**
+     * Checks if the character can be start of the number.
      *
-     * @param c
-     * @return
+     * @param c the character
+     * @return true, if it can be the start
      */
     public static boolean canBeStartOfANumber(char c) {
         return NUMBER_STARTERS.contains(c);

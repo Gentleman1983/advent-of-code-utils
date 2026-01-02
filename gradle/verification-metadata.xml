@@ -23,7 +23,10 @@
             <trusting group="org.apache.struts"/>
          </trusted-key>
          <trusted-key id="13AC2213964ABE1D1C147C0E1939A2520BAB1D90" group="org.freemarker" name="freemarker" version="2.3.34"/>
-         <trusted-key id="147B691A19097624902F4EA9689CBE64F4BC997F" group="org.mockito"/>
+         <trusted-key id="147B691A19097624902F4EA9689CBE64F4BC997F">
+            <trusting group="org.mockito"/>
+            <trusting group="org.mockito.kotlin" name="mockito-kotlin" version="6.1.0"/>
+         </trusted-key>
          <trusted-key id="19BEAB2D799C020F17C69126B16698A4ADF4D638">
             <trusting group="org.checkerframework" name="checker-qual" version="3.37.0"/>
             <trusting group="org.checkerframework" name="checker-qual" version="3.43.0"/>
