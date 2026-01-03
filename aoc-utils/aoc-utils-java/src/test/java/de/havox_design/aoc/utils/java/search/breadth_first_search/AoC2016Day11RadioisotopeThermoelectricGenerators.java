@@ -1,0 +1,98 @@
+package de.havox_design.aoc.utils.java.search.breadth_first_search;
+
+import de.havox_design.aoc.utils.java.AoCFunctionality;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static de.havox_design.aoc.utils.java.search.breadth_first_search.AoC2016Day11State.*;
+
+public class AoC2016Day11RadioisotopeThermoelectricGenerators implements AoCFunctionality {
+    private final List<String> input;
+
+    private int visitedNodeCount = 0;
+
+    public AoC2016Day11RadioisotopeThermoelectricGenerators(String fileName) {
+        input = readData(fileName);
+    }
+
+    public static long solvePart1(String fileName) {
+        AoC2016Day11RadioisotopeThermoelectricGenerators instance = new AoC2016Day11RadioisotopeThermoelectricGenerators(fileName);
+
+        return instance.solvePart1();
+    }
+
+    public static long solvePart2(String fileName) {
+        AoC2016Day11RadioisotopeThermoelectricGenerators instance = new AoC2016Day11RadioisotopeThermoelectricGenerators(fileName);
+
+        return instance.solvePart2();
+    }
+
+    public long solvePart1() {
+        return solve(input);
+    }
+
+    public long solvePart2() {
+        List<String> part2Input = new ArrayList<>(input);
+
+        part2Input.set(0, part2Input.getFirst() + " AND an elerium generator, an elerium-compatible microchip, "
+                + "a dilithium generator, a dilithium-compatible microchip.");
+
+        return solve(part2Input);
+    }
+
+    @SuppressWarnings({"squid:S3655", "squid:S3776"})
+    private long solve(List<String> lines) {
+        AoC2016Day11State startState = new AoC2016Day11State(lines);
+        PathResult<AoC2016Day11State> result = BreadthFirstSearch
+                .run(
+                        startState,
+                        state -> {
+                            visitedNodeCount++;
+
+                            Set<AoC2016Day11State> nextStates = new HashSet<>();
+                            for (int offset : new int[]{+1, -1}) {
+                                int newElevatorPos = state.getElevator() + offset;
+
+                                if (newElevatorPos < 0 || newElevatorPos >= FLOOR_COUNT) {
+                                    continue;
+                                }
+
+                                int itemCount = state.getItemCount();
+
+                                for (int a = 0; a < itemCount; a++) {
+                                    if (state.getFloor(a) != state.getElevator()) {
+                                        continue;
+                                    }
+
+                                    AoC2016Day11State nextState1 = state.move(a, newElevatorPos);
+
+                                    if (nextState1.isSafe()) {
+                                        nextStates.add(nextState1);
+                                    }
+
+                                    for (int b = a + 1; b < itemCount; b++) {
+                                        if (state.getFloor(b) != state.getElevator()) {
+                                            continue;
+                                        }
+
+                                        AoC2016Day11State nextState2 = nextState1.move(b, newElevatorPos);
+
+                                        if (nextState2.isSafe()) {
+                                            nextStates.add(nextState2);
+                                        }
+                                    }
+                                }
+                            }
+
+                            return nextStates;
+                        },
+                        AoC2016Day11State::isTerminal
+                )
+                .get();
+
+        return result.getDistance();
+    }
+}

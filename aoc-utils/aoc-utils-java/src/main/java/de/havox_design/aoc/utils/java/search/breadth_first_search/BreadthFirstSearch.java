@@ -4,11 +4,25 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+/**
+ * Implementation of breadth first search algorithm.
+ */
 public final class BreadthFirstSearch {
-
+    /**
+     * The constructor.
+     */
     private BreadthFirstSearch() {
     }
 
+    /**
+     * Runs the search.
+     *
+     * @param source the source node
+     * @param neighborProvider the provider of node neighbors
+     * @param targetPredicate the {@link Predicate} describing the target node
+     * @return the result
+     * @param <T> the type of node
+     */
     public static <T> Optional<PathResult<T>> run(
             T source,
             Function<T, Iterable<T>> neighborProvider,
@@ -23,10 +37,27 @@ public final class BreadthFirstSearch {
                 .min(Comparator.comparing(PathResult::getDistance));
     }
 
+    /**
+     * Runs a search step.
+     *
+     * @param source the source node
+     * @param neighborProvider the provider of node neighbors
+     * @return the updated data map
+     * @param <T> the type of node
+     */
     public static <T> Map<T, PathResult<T>> run(T source, Function<T, Iterable<T>> neighborProvider) {
         return run(List.of(source), neighborProvider, t -> false);
     }
 
+    /**
+     * Runs a search step.
+     *
+     * @param sources the source node
+     * @param neighborProvider the provider of node neighbors
+     * @param targetPredicate the {@link Predicate} describing the target node
+     * @return the updated data map
+     * @param <T> the type of node
+     */
     @SuppressWarnings("squid:S3824")
     public static <T> Map<T, PathResult<T>> run(
             Iterable<T> sources,
