@@ -41,6 +41,7 @@
          <trusted-key id="2DB4F1EF0FA761ECC4EA935C86FDC7E2A11262CB">
             <trusting group="commons-codec" name="commons-codec" version="1.17.1"/>
             <trusting group="commons-codec" name="commons-codec" version="1.19.0"/>
+            <trusting group="commons-codec" name="commons-codec" version="1.20.0"/>
             <trusting group="commons-io"/>
             <trusting group="org.apache.commons"/>
          </trusted-key>
