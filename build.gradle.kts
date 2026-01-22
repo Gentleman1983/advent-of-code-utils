@@ -42,7 +42,7 @@ tasks.named("check") {
 // Switch to gradle "all" distribution.
 tasks.withType<Wrapper> {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "9.2.1"
+    gradleVersion = "9.3.0"
 }
 
 rootProject.allprojects.forEach { currentProject ->
