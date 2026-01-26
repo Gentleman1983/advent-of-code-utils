@@ -27,6 +27,7 @@
             <trusting group="org.mockito"/>
             <trusting group="org.mockito.kotlin" name="mockito-kotlin" version="6.1.0"/>
             <trusting group="org.mockito.kotlin" name="mockito-kotlin" version="6.2.2"/>
+            <trusting group="org.mockito.kotlin" name="mockito-kotlin" version="6.2.3"/>
          </trusted-key>
          <trusted-key id="19BEAB2D799C020F17C69126B16698A4ADF4D638">
             <trusting group="org.checkerframework" name="checker-qual" version="3.37.0"/>
