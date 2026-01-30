@@ -93,6 +93,7 @@
             <trusting group="com.google.errorprone" name="error_prone_annotations"/>
             <trusting group="com.google.errorprone" name="error_prone_parent"/>
          </trusted-key>
+         <trusted-key id="F4DD59C90148BDC52BEB90A4530AA5F25C25011F" group="commons-codec"/>
          <trusted-key id="FF6E2C001948C5F2F38B0CC385911F425EC61B51">
             <trusting group="junit"/>
             <trusting group="org.apiguardian"/>
