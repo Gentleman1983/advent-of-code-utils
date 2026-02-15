@@ -7,12 +7,12 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.1
 * Refactored some classes.
 * Added unit tests.
-* Update dependency `nl.jqno.equalsverifier:equalsverifier` to v`4.3.1`
 * Update dependency `commons-codec:commons-codec` to v`1.21.0`
-* Update dependency `org.junit.jupiter:junit-jupiter` to v`6.0.2`
-* Update dependency `org.mockito.kotlin:mockito-kotlin` to v`6.2.3`
 * Update Gradle to v`9.3.1`
+* Update dependency `nl.jqno.equalsverifier:equalsverifier` to v`4.3.1`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.3.10`
+* Update dependency `org.junit.jupiter:junit-jupiter` to v`6.0.3`
+* Update dependency `org.mockito.kotlin:mockito-kotlin` to v`6.2.3`
 
 ## 2026.0.0
 * Refactored some classes.
@@ -88,6 +88,7 @@ day 4.
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
