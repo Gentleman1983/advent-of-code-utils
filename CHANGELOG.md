@@ -13,6 +13,8 @@ This document provides an overview to the changes on the different releases...
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.3.10`
 * Update dependency `org.junit.jupiter:junit-jupiter` to v`6.0.3`
 * Update dependency `org.mockito.kotlin:mockito-kotlin` to v`6.2.3`
+* Update dependency `org.mockito:mockito-core` to v`5.22.0`
+* Update dependency `org.mockito:mockito-junit-jupiter` to v`5.22.0`
 
 ## 2026.0.0
 * Refactored some classes.
@@ -88,6 +90,7 @@ day 4.
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
