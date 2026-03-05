@@ -5,7 +5,7 @@ This document provides an overview to the changes on the different releases...
 * t.b.d.
 
 ## 2026.0.2
-* t.b.d.
+* Update dependency `org.sonarqube` to v`7.2.3.7755`
 
 ## 2026.0.1
 * Refactored some classes.
@@ -93,6 +93,7 @@ day 4.
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
+
 
 
 
