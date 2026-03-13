@@ -7,6 +7,8 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.2
 * Update dependency `org.sonarqube` to v`7.2.3.7755`
 * Update Gradle to v`9.4.0`
+* Update dependency `org.mockito:mockito-core` to v`5.23.0`
+* Update dependency `org.mockito:mockito-junit-jupiter` to v`5.23.0`
 
 ## 2026.0.1
 * Refactored some classes.
