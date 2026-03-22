@@ -10,6 +10,7 @@ This document provides an overview to the changes on the different releases...
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.3.20`
 * Update dependency `org.mockito:mockito-core` to v`5.23.0`
 * Update dependency `org.mockito:mockito-junit-jupiter` to v`5.23.0`
+* Update dependency `org.mockito.kotlin:mockito-kotlin` to v`6.3.0`
 
 ## 2026.0.1
 * Refactored some classes.
