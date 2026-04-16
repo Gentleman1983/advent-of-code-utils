@@ -21,6 +21,5 @@ class BooleanHelperTest {
                 Arguments.of(true, 1),
                 Arguments.of(false, 0)
             )
-
     }
 }
