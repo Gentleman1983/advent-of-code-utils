@@ -1,6 +1,5 @@
 package de.havox_design.aoc.utils.kotlin.helpers
 
-import de.havox_design.aoc.utils.kotlin.helpers.math.ExtendedGcd
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
