@@ -1,5 +1,7 @@
 package de.havox_design.aoc.utils.kotlin.model.positions.directed_position;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import de.havox_design.aoc.utils.kotlin.model.coordinates.four_directions.FourDirections;
 import de.havox_design.aoc.utils.kotlin.model.positions.position_2d.Position2d;
 import org.junit.jupiter.api.Test;
@@ -9,22 +11,21 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class DirectedPositionTest {
     @Test
     void testConstructorAndGetters() {
         Position2d<Integer> position = new Position2d<>(3, 4);
         DirectedPosition dp = new DirectedPosition(position, FourDirections.UP);
 
-        assertEquals(3, dp.getX());
-        assertEquals(4, dp.getY());
+        assertEquals(position.getX(), dp.getX());
+        assertEquals(position.getY(), dp.getY());
     }
 
     @ParameterizedTest
     @MethodSource("getDataForTestForward")
     void testForward(FourDirections startDirection, Position2d<Integer> expectedPosition) {
-        DirectedPosition dp = new DirectedPosition(new Position2d<>(5, 5), startDirection);
+        Position2d<Integer> position = new Position2d<>(5, 5);
+        DirectedPosition dp = new DirectedPosition(position, startDirection);
 
         DirectedPosition result = dp.forward();
 
@@ -35,24 +36,26 @@ class DirectedPositionTest {
     @ParameterizedTest
     @MethodSource("getDataForTestTurnLeft")
     void testTurnLeft(FourDirections startDirection, FourDirections expectedDirection) {
-        DirectedPosition dp = new DirectedPosition(new Position2d<>(1, 1), startDirection);
+        Position2d<Integer> position = new Position2d<>(1, 1);
+        DirectedPosition dp = new DirectedPosition(position, startDirection);
 
         DirectedPosition result = dp.left();
 
-        assertEquals(1, result.getX());
-        assertEquals(1, result.getY());
+        assertEquals(position.getX(), result.getX());
+        assertEquals(position.getY(), result.getY());
         assertEquals(expectedDirection, resultDirection(result));
     }
 
     @ParameterizedTest
     @MethodSource("getDataForTestTurnRight")
     void testTurnRight(FourDirections startDirection, FourDirections expectedDirection) {
-        DirectedPosition dp = new DirectedPosition(new Position2d<>(1, 1), startDirection);
+        Position2d<Integer> position = new Position2d<>(1, 1);
+        DirectedPosition dp = new DirectedPosition(position, startDirection);
 
         DirectedPosition result = dp.right();
 
-        assertEquals(1, result.getX());
-        assertEquals(1, result.getY());
+        assertEquals(position.getX(), result.getX());
+        assertEquals(position.getY(), result.getY());
         assertEquals(expectedDirection, resultDirection(result));
     }
 

@@ -5,6 +5,7 @@ This document provides an overview to the changes on the different releases...
 * t.b.d.
 
 ## 2026.0.2
+* Refactored some classes.
 * Added unit tests.
 * Update dependency `org.sonarqube` to v`7.2.3.7755`
 * Update Gradle to v`9.4.1`
