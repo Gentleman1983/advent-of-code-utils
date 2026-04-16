@@ -15,5 +15,4 @@ fun String.isUpperCase(locale: Locale = Locale.getDefault()): Boolean =
     this.uppercase(locale) == this
 
 fun String.isLowerCase(locale: Locale = Locale.getDefault()): Boolean =
-    !this
-        .isUpperCase(locale)
+    this.lowercase(locale) == this
