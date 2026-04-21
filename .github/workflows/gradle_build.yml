@@ -22,7 +22,7 @@ jobs:
           node-version: 24
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3-beta
+        uses: gradle/gradle-build-action@v3.5.0
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
