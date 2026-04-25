@@ -1,5 +1,5 @@
 [versions]
-commons-codec = "1.21.0"
+commons-codec = "1.22.0"
 commons-collections4 = "4.5.0"
 equalsverifier = "4.5"
 hamcrest = "3.0"
