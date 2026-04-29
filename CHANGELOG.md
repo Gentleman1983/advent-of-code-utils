@@ -8,7 +8,7 @@ This document provides an overview to the changes on the different releases...
 * Refactored some classes.
 * Added unit tests.
 * Update gradle/gradle-build-action action to v`3.5.0`
-* Update Gradle to v`9.4.1`
+* Update Gradle to v`9.5.0`
 * Update dependency `commons-codec:commons-codec` to v`1.22.0`
 * Update dependency `nl.jqno.equalsverifier:equalsverifier` to v`4.5`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.3.21`
