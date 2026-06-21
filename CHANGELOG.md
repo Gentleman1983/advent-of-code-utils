@@ -7,6 +7,7 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.2
 * Refactored some classes.
 * Added unit tests.
+* Update actions/checkout action to v`7`
 * Update gradle/gradle-build-action action to v`3.5.0`
 * Update Gradle to v`9.5.1`
 * Update dependency `commons-codec:commons-codec` to v`1.22.0`
