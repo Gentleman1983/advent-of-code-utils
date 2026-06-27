@@ -23,8 +23,8 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.1
 * Refactored some classes.
 * Added unit tests.
-* Update dependency `commons-codec:commons-codec` to v`1.21.0`
 * Update Gradle to v`9.3.1`
+* Update dependency `commons-codec:commons-codec` to v`1.21.0`
 * Update dependency `nl.jqno.equalsverifier:equalsverifier` to v`4.4.1`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.3.10`
 * Update dependency `org.junit.jupiter:junit-jupiter` to v`6.0.3`
@@ -50,18 +50,18 @@ day 4.
 * Some minor refactorings.
 
 ## 2025.2.0
-*  Update dependency `org.sonarqube` to v`7.2.2.6593`
-*  Update dependency `org.jetbrains.kotlin.jvm` to v`2.3.0`
 *  Update to JDK `25`.
+*  Update dependency `org.jetbrains.kotlin.jvm` to v`2.3.0`
+*  Update dependency `org.sonarqube` to v`7.2.2.6593`
 
 ## 2025.1.2
 * Update dependency `org.sonarqube` to v`7.2.0.6526`
 
 ## 2025.1.1
-* Update dependency node to v`24`
-* Update Gradle to v`9.2.1`
-* Update dependency `org.junit.jupiter:junit-jupiter` to v`6.0.1`
 * Update actions/checkout action to v`6`
+* Update Gradle to v`9.2.1`
+* Update dependency node to v`24`
+* Update dependency `org.junit.jupiter:junit-jupiter` to v`6.0.1`
 * Update dependency `org.sonarqube` to v`7.1.0.6387`
 
 ## 2025.1.0
@@ -69,14 +69,14 @@ day 4.
 
 ## 2025.0.8
 * Update dependency `org.apache.struts:struts2-core` to v`7.1.1`
-* Update dependency `org.sonarqube` to v`7.0.1.6134`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.2.21`
+* Update dependency `org.sonarqube` to v`7.0.1.6134`
 
 ## 2025.0.7
-* Update Gradle to v`9.1.0`
-* Update dependency `org.junit.jupiter:junit-jupiter` to v`6`
-* Update dependency `jacoco` to v`0.8.14`
 * Update GitHub Setup node action to v`6`
+* Update Gradle to v`9.1.0`
+* Update dependency `jacoco` to v`0.8.14`
+* Update dependency `org.junit.jupiter:junit-jupiter` to v`6`
 * Update dependency `org.sonarqube` to `7.0.0.6105`
 
 ## 2025.0.6
@@ -88,15 +88,15 @@ day 4.
 * Update SonarQube Plugin to `6.3.1.5724`
 
 ## 2025.0.4
-* Update dependency `org.junit.jupiter:junit-jupiter` to v`5.13.4`
-* Update Gradle to `9.0.0`
 * Update Github Checkout Action to v`5`
+* Update Gradle to `9.0.0`
 * Update Kotlin JVM to `2.2.10`
+* Update dependency `org.junit.jupiter:junit-jupiter` to v`5.13.4`
 
 ## 2025.0.3
 * Update dependency `gradle` to v`8.14.3`
-* Update dependency `org.junit.jupiter:junit-jupiter` to v`5.13.3`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.2.0`
+* Update dependency `org.junit.jupiter:junit-jupiter` to v`5.13.3`
 
 ## 2025.0.2
 * Move version catalog to individual version catalog for easier integration as utility submodule.
@@ -106,18 +106,3 @@ day 4.
 
 ## 2025.0.0
 * First release apart from the "one-project" Advent of Code release.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
