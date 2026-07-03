@@ -12,7 +12,9 @@ This document provides an overview to the changes on the different releases...
 * Update Gradle to v`9.6.1`
 * Update dependency `commons-codec:commons-codec` to v`1.22.0`
 * Update dependency `jacoco` to v`0.8.15`
+* Added dependency `jakarta-annotation:jakarta-annotation-api` v`3.0.0`
 * Update dependency `nl.jqno.equalsverifier:equalsverifier` to v`4.5`
+* Update dependency `org.apache.struts:struts2-core` to v`7.2.1`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.0`
 * Update dependency `org.junit.jupiter:junit-jupiter` to v`6.1.1`
 * Update dependency `org.mockito:mockito-core` to v`5.23.0`
