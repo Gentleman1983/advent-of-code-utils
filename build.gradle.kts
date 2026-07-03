@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     rootProject.subprojects.forEach { subproject ->
-        jacocoAggregation(subproject)
+        jacocoAggregation(project(subproject.path))
     }
 }
 
