@@ -1,6 +1,6 @@
 package de.havox_design.aoc.utils.java.model.programs.jsonparser;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.util.List;
 
 /**
