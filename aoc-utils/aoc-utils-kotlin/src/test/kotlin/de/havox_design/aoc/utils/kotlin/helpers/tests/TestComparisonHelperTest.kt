@@ -1,6 +1,5 @@
 package de.havox_design.aoc.utils.kotlin.helpers.tests
 
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.math.BigInteger
 
