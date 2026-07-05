@@ -4,6 +4,9 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.x
 * t.b.d.
 
+## 2026.0.4
+* t.b.d.
+
 ## 2026.0.3
 * Added unit tests.
 
