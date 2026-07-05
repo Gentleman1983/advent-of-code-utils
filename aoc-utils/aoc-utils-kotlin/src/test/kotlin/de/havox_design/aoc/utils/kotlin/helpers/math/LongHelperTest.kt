@@ -1,10 +1,6 @@
 package de.havox_design.aoc.utils.kotlin.helpers.math
 
-import de.havox_design.aoc.utils.kotlin.helpers.isUpperCase
 import de.havox_design.aoc.utils.kotlin.helpers.tests.shouldBe
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
