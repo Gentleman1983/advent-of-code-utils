@@ -7,6 +7,7 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.4
 * Update actions/setup-node action to v`7`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.10`
+* Update dependency `org.junit.jupiter:junit-jupiter` to v`6.1.2`
 
 ## 2026.0.3
 * Added unit tests.
