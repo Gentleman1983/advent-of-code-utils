@@ -5,7 +5,8 @@ This document provides an overview to the changes on the different releases...
 * t.b.d.
 
 ## 2026.0.4
-* t.b.d.
+* Update actions/setup-node action to v`7`
+* Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.10`
 
 ## 2026.0.3
 * Added unit tests.
