@@ -1,6 +1,6 @@
 [versions]
 commons-codec = "1.22.1"
-commons-collections4 = "4.5.0"
+commons-collections4 = "4.6.0"
 equalsverifier = "4.5"
 hamcrest = "3.0"
 jakarta-annotation-api = "3.0.0"
