@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.sonarResolver
-
 dependencies {
     implementation(utilityLibs.jakarta.annotation.api)
     implementation(utilityLibs.struts2.core)
