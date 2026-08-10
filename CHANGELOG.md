@@ -6,6 +6,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2026.0.4
 * Update actions/setup-node action to v`7`
+* Update Gradle to v`9.7.0`
 * Update dependency `commons-codec:commons-codec` to v`1.22.1`
 * Update dependency `org.apache.commons:commons-collections4` to v`4.6.0`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.10`
