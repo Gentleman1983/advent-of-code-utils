@@ -9,6 +9,7 @@ This document provides an overview to the changes on the different releases...
 * Update Gradle to v`9.7.0`
 * Update dependency `commons-codec:commons-codec` to v`1.22.1`
 * Update dependency `org.apache.commons:commons-collections4` to v`4.6.0`
+* Update dependency `org.apache.struts:struts2-core` to v`7.3.0`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.10`
 * Update dependency `org.junit.jupiter:junit-jupiter` to v`6.1.3`
 
