@@ -5,6 +5,7 @@ This document provides an overview to the changes on the different releases...
 * t.b.d.
 
 ## 2026.0.4
+* Update actions/setup-java action to v`6`
 * Update actions/setup-node action to v`7`
 * Update Gradle to v`9.7.1`
 * Update dependency `commons-codec:commons-codec` to v`1.22.1`
