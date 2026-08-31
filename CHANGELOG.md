@@ -5,9 +5,13 @@ This document provides an overview to the changes on the different releases...
 * t.b.d.
 
 ## 2026.0.4
+* Update actions/setup-java action to v`6`
 * Update actions/setup-node action to v`7`
+* Update Gradle to v`9.7.1`
 * Update dependency `commons-codec:commons-codec` to v`1.22.1`
+* Update dependency `nl.jqno.equalsverifier:equalsverifier` to v`4.5.1`
 * Update dependency `org.apache.commons:commons-collections4` to v`4.6.0`
+* Update dependency `org.apache.struts:struts2-core` to v`7.3.0`
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.10`
 * Update dependency `org.junit.jupiter:junit-jupiter` to v`6.1.3`
 
