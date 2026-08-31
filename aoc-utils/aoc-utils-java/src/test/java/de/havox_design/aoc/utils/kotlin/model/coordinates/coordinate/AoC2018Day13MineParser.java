@@ -27,8 +27,9 @@ public class AoC2018Day13MineParser {
                 ][input.size()];
         Coordinate point;
 
+        String delimiter = "(?!^)";
         for (int i = 0; i < input.size(); i++) {
-            String[] s = input.get(i).split("(?!^)");
+            String[] s = input.get(i).split(delimiter);
 
             for (int j = 0; j < s.length; j++) {
                 point = new Coordinate(j, i);
