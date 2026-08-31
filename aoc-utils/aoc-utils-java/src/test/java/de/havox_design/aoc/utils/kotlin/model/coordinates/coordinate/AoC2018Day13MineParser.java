@@ -16,6 +16,7 @@ public class AoC2018Day13MineParser {
     private static final String UP_FORMAT = "[|^]";
     private static final String UP_LEFT_FORMAT = "\\\\";
 
+    @SuppressWarnings("java:S9142")
     public AoC2018Day13Mine parse(List<String> input) {
         Set<AoC2018Day13Cart> carts = new HashSet<>();
         AoC2018Day13Path[][] paths = new AoC2018Day13Path[
@@ -27,9 +28,8 @@ public class AoC2018Day13MineParser {
                 ][input.size()];
         Coordinate point;
 
-        String delimiter = "(?!^)";
         for (int i = 0; i < input.size(); i++) {
-            String[] s = input.get(i).split(delimiter);
+            String[] s = input.get(i).split("(?!^)");
 
             for (int j = 0; j < s.length; j++) {
                 point = new Coordinate(j, i);
