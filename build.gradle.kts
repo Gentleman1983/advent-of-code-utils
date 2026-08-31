@@ -105,3 +105,7 @@ rootProject.allprojects.forEach { currentProject ->
         }
     }
 }
+
+project(":aoc-utils:aoc-utils-java").tasks.named ("sonarResolver") {
+    dependsOn(":aoc-utils:aoc-utils-kotlin:compileJava", ":aoc-utils:aoc-utils-kotlin:compileKotlin")
+}
