@@ -12,7 +12,7 @@ This document provides an overview to the changes on the different releases...
 * Update dependency `nl.jqno.equalsverifier:equalsverifier` to v`4.5.2`
 * Update dependency `org.apache.commons:commons-collections4` to v`4.6.0`
 * Update dependency `org.apache.struts:struts2-core` to v`7.3.0`
-* Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.10`
+* Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.20`
 * Update dependency `org.junit.jupiter:junit-jupiter` to v`6.1.3`
 * Update dependency `org.sonarqube` to v`7.5.0.8588`
 
