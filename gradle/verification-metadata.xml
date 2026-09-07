@@ -20,6 +20,7 @@
          <ignored-key id="FF844A3256C7FB01" reason="Key couldn't be downloaded from any key server"/>
       </ignored-keys>
       <trusted-keys>
+         <trusted-key id="06D0369BE1D0B06997DA66E8C33B56C147B01975" group="^org[.]sonarsource[.]scanner($|([.].*))" regex="true"/>
          <trusted-key id="077E8893A6DCC33DD4A4D5B256E73BA9A0B592D0" group="^org[.]apache[.]logging($|([.].*))" regex="true"/>
          <trusted-key id="0E008698344E62B90633B7C62841610663AFBB1F">
             <trusting group="ognl"/>
