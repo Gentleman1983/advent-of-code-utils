@@ -10,6 +10,7 @@ This document provides an overview to the changes on the different releases...
 * Update Gradle to v`9.8.1`
 * Update mockito monorepo to v`5.24.0`
 * Update dependency `commons-codec:commons-codec` to v`1.23.0`
+* Update dependency `jacoco` to v`0.8.16`
 * Update dependency `nl.jqno.equalsverifier:equalsverifier` to v`4.5.2`
 * Update dependency `org.apache.commons:commons-collections4` to v`4.6.0`
 * Update dependency `org.apache.struts:struts2-core` to v`7.4.0`
