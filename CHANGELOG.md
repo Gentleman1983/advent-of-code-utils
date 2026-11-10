@@ -7,7 +7,7 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.4
 * Update actions/setup-java action to v`6`
 * Update actions/setup-node action to v`7`
-* Update Gradle to v`9.9.0`
+* Update Gradle to v`9.9.1`
 * Update mockito monorepo to v`5.24.0`
 * Update dependency node to v`26`
 * Update dependency `commons-codec:commons-codec` to v`1.23.0`
