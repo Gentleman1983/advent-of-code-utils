@@ -18,7 +18,7 @@ This document provides an overview to the changes on the different releases...
 * Update dependency `org.jetbrains.kotlin.jvm` to v`2.4.21`
 * Update dependency `org.junit.jupiter:junit-jupiter` to v`6.1.3`
 * Update dependency `org.mockito.kotlin:mockito-kotlin` to v`6.4.0`
-* Update dependency `org.sonarqube` to v`7.5.0.8588`
+* Update dependency `org.sonarqube` to v`7.6.0.18749`
 
 ## 2026.0.3
 * Added unit tests.
