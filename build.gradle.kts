@@ -54,11 +54,11 @@ rootProject.allprojects.forEach { currentProject ->
     }
 
     currentProject.dependencies {
-        testImplementation(libs.equalsverifier)
+        testImplementation(utilityLibs.equalsverifier)
         testImplementation(utilityLibs.hamcrest)
         testImplementation(utilityLibs.junit.jupiter)
-        testImplementation(libs.mockito.core)
-        testImplementation(libs.mockito.junit.jupiter)
+        testImplementation(utilityLibs.mockito.core)
+        testImplementation(utilityLibs.mockito.junit.jupiter)
     }
 
     currentProject.jacoco {
