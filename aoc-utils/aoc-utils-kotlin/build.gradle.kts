@@ -9,7 +9,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
-    testImplementation(libs.mockito.kotlin)
+    testImplementation(utilityLibs.mockito.kotlin)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
