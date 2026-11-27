@@ -4,6 +4,9 @@ This document provides an overview to the changes on the different releases...
 ## 2026.0.x
 * t.b.d.
 
+## 2026.0.5
+* Fixed some issues in accessing version catalog
+
 ## 2026.0.4
 * Update actions/setup-java action to v`6`
 * Update actions/setup-node action to v`7`
