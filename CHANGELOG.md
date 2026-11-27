@@ -6,6 +6,7 @@ This document provides an overview to the changes on the different releases...
 
 ## 2026.0.5
 * Fixed some issues in accessing version catalog
+* Update mockito monorepo to v`5.25.0`
 
 ## 2026.0.4
 * Update actions/setup-java action to v`6`
